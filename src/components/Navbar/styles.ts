@@ -1,0 +1,25 @@
+import styled from "styled-components";
+import { Color } from "../../ui/colors";
+
+export const StyledHeader = styled.nav`
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  align-items: center;
+  max-height: 104px;
+  margin-bottom: 72px;
+  margin-top: 24px;
+`;
+
+// export const Input = styled.input`
+//   max-width: 542px;
+// `;
+
+export const NavList = styled.ul`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+`;
+
+export const NavItem = styled.li`
+  list-style: none;
+`;

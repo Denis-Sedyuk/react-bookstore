@@ -6,24 +6,27 @@ import { BookPage } from "./pages/BookPage";
 import { CartPage } from "./pages/CartPage";
 import { FavoritesPage } from "./pages/FavoritesPage";
 import { HomePage } from "./pages/HomePage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 import { ResetPage } from "./pages/ResetPage";
 import { SearchPage } from "./pages/SearchPage";
 import { SignInPage } from "./pages/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage";
+import { ROUTE } from "./routes";
 
 export const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainTemplate />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="search" element={<SearchPage />} />
-        <Route path="book" element={<BookPage />} />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="favorites" element={<FavoritesPage />} />
-        <Route path="account" element={<AccountPage />} />
-        <Route path="sign-in" element={<SignInPage />} />
-        <Route path="sign-up" element={<SignUpPage />} />
-        <Route path="reset" element={<ResetPage />} />
+      <Route path={ROUTE.HOME} element={<MainTemplate />}>
+        <Route index element={<HomePage />} />
+        <Route path={ROUTE.SEARCH} element={<SearchPage />} />
+        <Route path={ROUTE.BOOK} element={<BookPage />} />
+        <Route path={ROUTE.CART} element={<CartPage />} />
+        <Route path={ROUTE.FAVORITES} element={<FavoritesPage />} />
+        <Route path={ROUTE.ACCOUNT} element={<AccountPage />} />
+        <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
+        <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
+        <Route path={ROUTE.RESET} element={<ResetPage />} />
+        <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
