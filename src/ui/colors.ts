@@ -1,6 +1,6 @@
 export enum Color {
   Primary = "#313037",
-  Primary_light = "#5B5A62",
+  Primary_Light = "#5B5A62",
   Secondary = "#A8A8A8",
   White = "#FFFFFF",
   Gray = "#E7E7E7",

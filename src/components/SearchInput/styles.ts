@@ -8,6 +8,5 @@ export const StyledInput = styled.input`
   font-weight: 400;
   font-size: 16px;
   line-height: 32px;
-  color: ${Color.Secondary};
   padding-left: 20px;
 `;

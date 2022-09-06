@@ -9,7 +9,6 @@ export const StyledItem = styled.li`
 
 export const BookPhoto = styled.div`
   width: 100%;
-  align-self: center;
   background-color: ${Color.Blue};
   margin-bottom: 20px;
 `;

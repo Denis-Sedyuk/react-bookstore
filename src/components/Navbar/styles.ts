@@ -8,6 +8,8 @@ export const StyledHeader = styled.nav`
   max-height: 104px;
   margin-bottom: 72px;
   margin-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid ${Color.Gray};
 `;
 
 // export const Input = styled.input`
