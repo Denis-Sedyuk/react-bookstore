@@ -1,5 +1,10 @@
 import React from "react";
+import { Form, SignInContainer } from "./styles";
 
 export const SignInPage = () => {
-  return <div>SignInPage</div>;
+  return (
+    <SignInContainer>
+      <Form></Form>
+    </SignInContainer>
+  );
 };

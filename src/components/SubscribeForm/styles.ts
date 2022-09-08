@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Color } from "../../ui/colors";
+import { Media } from "../../ui/media";
 
 export const StyledForm = styled.form`
   display: flex;
@@ -8,6 +9,14 @@ export const StyledForm = styled.form`
   margin-top: 72px;
   padding-inline: 64px;
   padding-block: 56px;
+
+  ${Media.Tablet} {
+    margin: 0 40px;
+  }
+
+  ${Media.Mobile} {
+    margin: 0 24px;
+  }
 `;
 
 export const Title = styled.h3`
