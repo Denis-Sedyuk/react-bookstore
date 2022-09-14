@@ -23,12 +23,12 @@ import {
   Edition,
   ProductInfo,
   MoreDetails,
-  ButtonToCard,
   TextPreviewBook,
   DescriptionList,
   DescriptionItem,
   DescriptionBox,
   Description,
+  ButtonAddToCart,
 } from "./styles";
 import { BookItem } from "../../components/BookItem/BookItem";
 
@@ -60,7 +60,7 @@ export const BookPage = () => {
                 style={{ position: "absolute", top: 4, right: -22 }}
               />
             </MoreDetails>
-            <ButtonToCard>ADD TO CART</ButtonToCard>
+            <ButtonAddToCart type="submit">ADD TO CART</ButtonAddToCart>
             <TextPreviewBook>Preview book</TextPreviewBook>
           </InfoAboutBookBox>
         </PreviewBook>

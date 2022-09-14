@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color } from "../../ui/colors";
 
-export const StyledHeader = styled.nav`
+export const StyledHeader = styled.form`
   display: grid;
   grid-template-columns: 3fr 3fr 3fr;
   align-items: center;
@@ -10,6 +11,10 @@ export const StyledHeader = styled.nav`
   margin-top: 24px;
   padding-bottom: 24px;
   border-bottom: 1px solid ${Color.Gray};
+`;
+
+export const NavLink = styled(Link)`
+  max-width: 148px;
 `;
 
 // export const Input = styled.input`

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../components/Button/Button";
 import { Color } from "../../ui/colors";
 
 export const BookPageContainer = styled.div`
@@ -74,15 +75,15 @@ export const MoreDetails = styled.p`
   line-height: 24px;
 `;
 
-export const ButtonToCard = styled.button`
+export const ButtonAddToCart = styled(Button)`
   grid-column: span 2;
   margin-top: 77px;
   font-weight: 700;
   font-size: 24px;
   line-height: 24px;
-  color: ${Color.White};
-  background: ${Color.Primary};
   padding: 18px 0 14px;
+  background-color: ${Color.Primary};
+  color: ${Color.White};
 `;
 
 export const TextPreviewBook = styled.p`

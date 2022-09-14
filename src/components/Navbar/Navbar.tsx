@@ -5,16 +5,34 @@ import { ReactComponent as FavoritesIcon } from "../../assets/icons/favorites-ic
 import { ReactComponent as CartIcon } from "../../assets/icons/cart-icon.svg";
 import { ReactComponent as UserIcon } from "../../assets/icons/user-icon.svg";
 import { Input } from "../SearchInput/Input";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ROUTE } from "../../routes";
+import { useForm, SubmitHandler, Control } from "react-hook-form";
+
+export type NavBarValues = {
+  search: string;
+};
 
 export const Navbar = () => {
+  const { register, handleSubmit, reset, control } = useForm<NavBarValues>();
+
+  const onsubmit: SubmitHandler<NavBarValues> = (data) => {
+    console.log(data);
+    //  Тут нужно записать данные в редакс
+  };
+  reset();
   return (
-    <StyledHeader>
-      <Link to={ROUTE.HOME} style={{ maxWidth: "148px" }}>
+    <StyledHeader onSubmit={handleSubmit(onsubmit)}>
+      <NavLink to={ROUTE.HOME}>
         <Logo />
-      </Link>
-      <Input />
+      </NavLink>
+      <Input
+        {...register("search")}
+        placeholder="search"
+        type="text"
+        control={control}
+        name="search"
+      />
       <NavList>
         <NavItem>
           <Link to={ROUTE.FAVORITES}>

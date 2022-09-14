@@ -41,13 +41,13 @@ export const InputForm = styled.div`
   display: flex;
 `;
 
-export const Input = styled.input`
-  width: 100%;
-  padding: 16px 0 16px 24px;
-  border: none;
-`;
+// export const Input = styled.input`
+//   width: 100%;
+//   padding: 16px 0 16px 24px;
+//   border: none;
+// `;
 
-export const Button = styled.button`
+export const SubscribeButton = styled.button`
   border: none;
   border-radius: 0px 2px 2px 0px;
   background-color: ${Color.Primary};

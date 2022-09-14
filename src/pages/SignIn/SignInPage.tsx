@@ -1,10 +1,13 @@
 import React from "react";
-import { Form, SignInContainer } from "./styles";
+import { SignInForm } from "../../components/SignInForm/SignInForm";
+import { SignUpForm } from "../../components/SignUpForm/SignUpForm";
+import { SignInContainer } from "./styles";
 
 export const SignInPage = () => {
   return (
     <SignInContainer>
-      <Form></Form>
+      <SignInForm />
+      <SignUpForm />
     </SignInContainer>
   );
 };
