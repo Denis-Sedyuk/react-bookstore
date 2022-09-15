@@ -1,20 +1,20 @@
 import React from "react";
-import { NavItem, NavList, StyledHeader } from "./styles";
+import { NavItem, NavLinkIcon, NavList, StyledHeader } from "./styles";
 import { ReactComponent as Logo } from "../../assets/icons/bookstore.svg";
 import { ReactComponent as FavoritesIcon } from "../../assets/icons/favorites-icon.svg";
 import { ReactComponent as CartIcon } from "../../assets/icons/cart-icon.svg";
 import { ReactComponent as UserIcon } from "../../assets/icons/user-icon.svg";
 import { Input } from "../SearchInput/Input";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
-import { useForm, SubmitHandler, Control } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 
 export type NavBarValues = {
   search: string;
 };
 
 export const Navbar = () => {
-  const { register, handleSubmit, reset, control } = useForm<NavBarValues>();
+  const { handleSubmit, reset, control } = useForm<NavBarValues>();
 
   const onsubmit: SubmitHandler<NavBarValues> = (data) => {
     console.log(data);
@@ -23,15 +23,23 @@ export const Navbar = () => {
   reset();
   return (
     <StyledHeader onSubmit={handleSubmit(onsubmit)}>
-      <NavLink to={ROUTE.HOME}>
+      <NavLinkIcon to={ROUTE.HOME}>
         <Logo />
-      </NavLink>
-      <Input
-        {...register("search")}
-        placeholder="search"
-        type="text"
-        control={control}
+      </NavLinkIcon>
+      <Controller
         name="search"
+        control={control}
+        render={({ field: { onChange, value } }) => {
+          return (
+            <Input
+              name={"search"}
+              placeholder="Search"
+              value={value}
+              onChange={onChange}
+              type="text"
+            />
+          );
+        }}
       />
       <NavList>
         <NavItem>

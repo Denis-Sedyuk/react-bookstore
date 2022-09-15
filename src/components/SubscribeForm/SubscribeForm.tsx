@@ -1,20 +1,14 @@
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { Input } from "../SearchInput/Input";
-import {
-  InputForm,
-  StyledForm,
-  SubscribeButton,
-  Subtitle,
-  Title,
-} from "./styles";
+import { InputForm, StyledForm, SubscribeButton, Subtitle, Title } from "./styles";
 
 export type SubscribeValues = {
   email: string;
 };
 
 export const SubscribeForm = () => {
-  const { register, handleSubmit, reset } = useForm<SubscribeValues>();
+  const { handleSubmit, reset, control } = useForm<SubscribeValues>();
 
   const onsubmit: SubmitHandler<SubscribeValues> = (data) => {
     console.log(data);
@@ -26,16 +20,23 @@ export const SubscribeForm = () => {
     <StyledForm onSubmit={handleSubmit(onsubmit)}>
       <Title>Subscribe to Newsletter</Title>
       <Subtitle>
-        Be the first to know about new IT books, upcoming releases, exclusive
-        offers and more.
+        Be the first to know about new IT books, upcoming releases, exclusive offers and more.
       </Subtitle>
       <InputForm>
-        <Input
-          placeholder="Your email"
-          {...register("email")}
-          type="text"
+        <Controller
           name="email"
           control={control}
+          render={({ field: { onChange, value } }) => {
+            return (
+              <Input
+                name="email"
+                placeholder="Your email"
+                value={value}
+                onChange={onChange}
+                type="email"
+              />
+            );
+          }}
         />
         <SubscribeButton type="submit">Subscribe</SubscribeButton>
       </InputForm>

@@ -1,4 +1,4 @@
-import React, { HTMLInputTypeAttribute } from "react";
+import React, { ChangeEvent, HTMLInputTypeAttribute } from "react";
 import { Control, Controller } from "react-hook-form";
 import { NavBarValues } from "../Navbar/Navbar";
 import { SignInValues } from "../SignInForm/SignInForm";
@@ -10,31 +10,11 @@ import { StyledInput } from "./styles";
 interface Iprops {
   placeholder: string;
   type: HTMLInputTypeAttribute;
-  name:
-    | keyof SignInValues
-    | keyof SignUpValues
-    | keyof NavBarValues
-    | keyof SubscribeValues;
-  control: Control<
-    SignInValues | SignUpValues | NavBarValues | SubscribeValues
-  >;
+  name: keyof SignInValues | keyof SignUpValues | keyof NavBarValues | keyof SubscribeValues;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({ placeholder, type, name, control }: Iprops) => {
-  return (
-    <Controller
-      name={name}
-      control={control}
-      render={({ field: { onChange, value } }) => {
-        return (
-          <StyledInput
-            placeholder={placeholder}
-            onChange={onChange}
-            value={value}
-            type={type}
-          />
-        );
-      }}
-    />
-  );
+export const Input = ({ placeholder, type, name, onChange }: Iprops) => {
+  return <StyledInput placeholder={placeholder} type={type} name={name} onChange={onChange} />;
 };

@@ -13,13 +13,9 @@ export const StyledHeader = styled.form`
   border-bottom: 1px solid ${Color.Gray};
 `;
 
-export const NavLink = styled(Link)`
-  max-width: 148px;
+export const NavLinkIcon = styled(Link)`
+  max-width: 149px;
 `;
-
-// export const Input = styled.input`
-//   max-width: 542px;
-// `;
 
 export const NavList = styled.ul`
   display: flex;
