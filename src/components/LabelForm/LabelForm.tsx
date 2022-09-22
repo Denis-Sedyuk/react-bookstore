@@ -1,6 +1,9 @@
-import React from "react";
 import { Label } from "./styles";
 
-export const LabelForm = () => {
-  return <Label />;
+interface IProps {
+  children: string;
+}
+
+export const LabelForm = ({ children }: IProps) => {
+  return <Label children={children} />;
 };

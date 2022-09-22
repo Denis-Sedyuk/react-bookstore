@@ -1,6 +1,5 @@
-import React from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { Input } from "../SearchInput/Input";
+import { Input } from "../index";
 import { InputForm, StyledForm, SubscribeButton, Subtitle, Title } from "./styles";
 
 export type SubscribeValues = {

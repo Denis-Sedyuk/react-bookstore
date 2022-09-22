@@ -1,23 +1,23 @@
-import React from "react";
-import { Author, BookPhoto, BookTitle, Price, StyledItem } from "./styles";
-import { ReactComponent as BookImage } from "../../assets/images/bookrobot.svg";
+import { BookPhotoBox, BookSubTitle, BookTitle, Photo, Price, StyledItem } from "./styles";
 import { Link } from "react-router-dom";
+import { IBook } from "../../types/types";
+import { ROUTE } from "../../routes";
 
-export const BookItem = () => {
+interface IProps {
+  book: IBook;
+}
+
+export const BookItem = ({ book }: IProps) => {
   return (
-    <StyledItem>
-      <Link to={"book"}>
-        <BookPhoto>
-          <BookImage />
-        </BookPhoto>
-      </Link>
-      <Link to={"book"}>
-        <BookTitle>
-          Robot Operating System (ROS) for Absolute Beginners{" "}
-        </BookTitle>
-      </Link>
-      <Author>by Lentin Joseph, Apress 2018</Author>
-      <Price>$31.38 </Price>
-    </StyledItem>
+    <Link to={`/books/${book.isbn13}`}>
+      <StyledItem>
+        <BookPhotoBox>
+          <Photo src={book.image} />
+        </BookPhotoBox>
+        <BookTitle>{book.title}</BookTitle>
+        <BookSubTitle>{book.subtitle ? book.subtitle : "Description will come later"}</BookSubTitle>
+        <Price>{book.price === "$0.00" ? "This book is free" : book.price}</Price>
+      </StyledItem>
+    </Link>
   );
 };

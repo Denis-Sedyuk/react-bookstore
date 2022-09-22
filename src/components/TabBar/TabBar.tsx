@@ -1,16 +1,22 @@
-import React from "react";
-import { SignButton, StyledTabBar } from "./styles";
+import { Button, StyledTabBar } from "./styles";
 
-interface Iprops {
+interface IProps {
   section: string;
-  setSection: React.Dispatch<React.SetStateAction<string>>;
+  setSection: (value: string) => void;
 }
 
-export const TabBar = ({ setSection }: Iprops) => {
+export const TabBar = ({ setSection }: IProps) => {
+  const handleSetSignIn = () => {
+    setSection("SignIn");
+  };
+
+  const handleSetSignUp = () => {
+    setSection("SignUp");
+  };
   return (
     <StyledTabBar>
-      <SignButton onClick={() => setSection("SignIn")}>SIGN IN</SignButton>
-      <SignButton onClick={() => setSection("SignUp")}>SIGN UP</SignButton>
+      <Button onClick={handleSetSignIn}>Sign in</Button>
+      <Button onClick={handleSetSignUp}>Sign up</Button>
     </StyledTabBar>
   );
 };

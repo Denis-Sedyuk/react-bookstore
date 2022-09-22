@@ -1,6 +1,5 @@
 import React from "react";
-import { BookList } from "../../components/BookList/BookList";
-import { Title } from "../../components/SubscribeForm/styles";
+import { BookList, Title } from "../../components/index";
 import { ResultFound, SearchPageContainer } from "./styles";
 
 export const SearchPage = () => {

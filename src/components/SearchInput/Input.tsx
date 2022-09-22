@@ -1,10 +1,8 @@
-import React, { ChangeEvent, HTMLInputTypeAttribute } from "react";
-import { Control, Controller } from "react-hook-form";
+import { ChangeEvent, HTMLInputTypeAttribute } from "react";
 import { NavBarValues } from "../Navbar/Navbar";
 import { SignInValues } from "../SignInForm/SignInForm";
 import { SignUpValues } from "../SignUpForm/SignUpForm";
 import { SubscribeValues } from "../SubscribeForm/SubscribeForm";
-
 import { StyledInput } from "./styles";
 
 interface Iprops {

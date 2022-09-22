@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color } from "../../ui/colors";
+import { Media } from "../../ui/media";
 
 export const StyledHeader = styled.form`
   display: grid;
@@ -11,6 +12,14 @@ export const StyledHeader = styled.form`
   margin-top: 24px;
   padding-bottom: 24px;
   border-bottom: 1px solid ${Color.Gray};
+
+  ${Media.Tablet} {
+    padding: 0 40px;
+  }
+
+  ${Media.Mobile} {
+    padding: 0 24px;
+  }
 `;
 
 export const NavLinkIcon = styled(Link)`

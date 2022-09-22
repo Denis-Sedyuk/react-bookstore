@@ -5,12 +5,18 @@ export const StyledItem = styled.li`
   display: flex;
   flex-direction: column;
   max-width: 352px;
+  width: 100%;
 `;
 
-export const BookPhoto = styled.div`
+export const BookPhotoBox = styled.div`
   width: 100%;
   background-color: ${Color.Blue};
   margin-bottom: 20px;
+`;
+
+export const Photo = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 export const BookTitle = styled.h2`
@@ -21,7 +27,7 @@ export const BookTitle = styled.h2`
   margin-bottom: 8px;
 `;
 
-export const Author = styled.p`
+export const BookSubTitle = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;

@@ -1,12 +1,11 @@
 export enum ROUTE {
   HOME = "/",
-  SEARCH = "search",
-  BOOK = "book",
+  SEARCH = "/search",
+  BOOK = "/books/",
   CART = "cart",
   FAVORITES = "favorites",
   ACCOUNT = "account",
-  SIGN_IN = "sign-in",
-  SIGN_UP = "sign-up",
+  USER = "user",
   RESET_PASSWORD = "reset",
   NOT_FOUND = "*",
 }

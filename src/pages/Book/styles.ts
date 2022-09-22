@@ -17,18 +17,32 @@ export const TitleBox = styled.div`
 export const BookInfoBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  column-gap: 128px;
   margin-top: 10px;
-  height: 500px;
+`;
+
+export const BookPhotoBox = styled.div`
+  width: 100%;
+  max-width: 544px;
+  background-color: ${Color.Blue};
+  margin-bottom: 20px;
+`;
+
+export const Photo = styled.img`
+  width: 100%;
 `;
 
 export const PreviewBook = styled.div`
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  max-width: 448px;
-  max-height: 472px;
+  display: flex;
+  flex-direction: column;
+  max-width: 460px;
   border-top: 1px solid ${Color.Gray};
+`;
+
+export const CostStarBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const Price = styled.span`
@@ -40,43 +54,50 @@ export const Price = styled.span`
   line-height: 60px;
 `;
 
+export const Rating = styled.p`
+  font-size: 40px;
+`;
+
 export const InfoAboutBookBox = styled.div`
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin-top: 24px;
 `;
 
-export const Edition = styled.span`
-  justify-self: start;
+export const BasicAboutBookBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const KeyAboutBook = styled.span`
+  text-align: start;
   color: ${Color.Secondary};
   font-weight: 400;
   font-size: 16px;
   line-height: 32px;
 `;
 
-export const ProductInfo = styled.span`
-  justify-self: end;
+export const ValueAboutBook = styled.span`
+  text-align: end;
   color: ${Color.Primary};
   font-weight: 400;
   font-size: 16px;
   line-height: 32px;
 `;
 
-export const MoreDetails = styled.p`
-  grid-column: span 2;
-  justify-self: start;
-  position: relative;
-  color: ${Color.Primary};
-  margin-top: 14px;
+export const MoreDetails = styled.a`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  position: relative;
+  max-width: 121px;
+  color: ${Color.Primary};
+  margin: 14px 0 60px;
+  text-align: start;
 `;
 
 export const ButtonAddToCart = styled(Button)`
-  grid-column: span 2;
   margin-top: 77px;
   font-weight: 700;
   font-size: 24px;
@@ -86,9 +107,7 @@ export const ButtonAddToCart = styled(Button)`
   color: ${Color.White};
 `;
 
-export const TextPreviewBook = styled.p`
-  grid-column: span 2;
-  justify-self: center;
+export const TextPreviewBook = styled.a`
   margin-top: 40px;
   font-weight: 400;
   font-size: 16px;
@@ -99,6 +118,7 @@ export const TextPreviewBook = styled.p`
 export const DescriptionList = styled.div`
   display: flex;
   width: 100%;
+  margin-top: 72px;
   border-bottom: 1px solid ${Color.Gray};
 `;
 
@@ -113,12 +133,10 @@ export const DescriptionItem = styled.button`
 
   :disabled {
     color: ${Color.Primary};
-    border-bottom: 1px solid ${Color.Primary};
   }
 
   :active {
     color: ${Color.Primary};
-    border-bottom: 1px solid ${Color.Primary};
   }
 
   :hover {
@@ -136,16 +154,6 @@ export const Description = styled.p`
   font-size: 16px;
   line-height: 32px;
   color: ${Color.Primary};
-`;
-
-export const SocialNetworksList = styled.ul`
-  margin-top: 50px;
-  display: flex;
-  column-gap: 25px;
-`;
-
-export const SocialNetworksItem = styled.li`
-  list-style: none;
 `;
 
 export const SimilarBookBox = styled.div`

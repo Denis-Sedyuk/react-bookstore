@@ -1,13 +1,5 @@
-import React from "react";
-import { ReactComponent as ArrowBackIcon } from "../../assets/icons/arrow-back-icon.svg";
-import { ReactComponent as FaceBookIcon } from "../../assets/icons/facebook-icon.svg";
-import { ReactComponent as TwitterIcon } from "../../assets/icons/twitter-icon.svg";
-import { ReactComponent as MoreHorizontalIcon } from "../../assets/icons/more-horizontal-icon.svg";
-import { ReactComponent as ArrowLeftIcon } from "../../assets/icons/arrow-left-icon.svg";
-import { ReactComponent as ArrowRightIcon } from "../../assets/icons/arrow-right-icon.svg";
-import { ReactComponent as ChevronDownIcon } from "../../assets/icons/chevron-down-icon.svg";
-import { SubscribeForm } from "../../components/SubscribeForm/SubscribeForm";
-import { Title } from "../../components/Title/Title";
+import { ArrowBackIcon, ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from "../../assets/index";
+import { Title, BookItem, SubscribeForm } from "../../components/index";
 import {
   ArrowsBox,
   BookInfoBox,
@@ -17,11 +9,8 @@ import {
   Price,
   SimilarBookBox,
   SimilarTitle,
-  SocialNetworksItem,
-  SocialNetworksList,
   TitleBox,
-  Edition,
-  ProductInfo,
+  KeyAboutBook,
   MoreDetails,
   TextPreviewBook,
   DescriptionList,
@@ -29,75 +18,97 @@ import {
   DescriptionBox,
   Description,
   ButtonAddToCart,
+  Photo,
+  BookPhotoBox,
+  CostStarBox,
+  Rating,
+  ValueAboutBook,
+  BasicAboutBookBox,
 } from "./styles";
-import { BookItem } from "../../components/BookItem/BookItem";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { getBooksDetails } from "../../store/selectors/bookDetailsSelectors";
+import { fetchBookDetails } from "../../store/feautures/bookDetailsSlice";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getBooks } from "../../store/selectors/bookSelectors";
+import { fetchBooks } from "../../store/feautures/bookSlice";
 
 export const BookPage = () => {
+  const dispatch = useAppDispatch();
+  const { books } = useAppSelector(getBooks);
+
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  const { isbn13 } = useParams();
+
+  const { isLoading, error, bookDetails } = useAppSelector(getBooksDetails);
+
+  useEffect(() => {
+    dispatch(fetchBookDetails(isbn13!));
+  }, [dispatch, isbn13]);
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>Error</h1>;
+  }
+
   return (
     <BookPageContainer>
+      <h2>{bookDetails.subtitle}</h2>
+      <h2>{bookDetails.isbn10}</h2>
+      <h2>{bookDetails.url}</h2>
+      {/* <h2>{bookDetails.pdf}</h2> */}
       <TitleBox>
         <ArrowBackIcon />
-        <Title>
-          Robot Operating System (ROS) for Absolute Beginners, 2nd Edition
-        </Title>
+        <Title>{bookDetails.title}</Title>
       </TitleBox>
       <BookInfoBox>
-        <BookItem />
+        <BookPhotoBox>
+          <Photo src={bookDetails.image} />
+        </BookPhotoBox>
         <PreviewBook>
-          <Price>$ 41.57</Price>
+          <CostStarBox>
+            <Price>{bookDetails.price === "$0.00" ? "Is free" : bookDetails.price}</Price>
+            <Rating>{bookDetails.rating}</Rating>
+          </CostStarBox>
           <InfoAboutBookBox>
-            <Edition>Authors</Edition>
-            <ProductInfo>Lentin Joseph, Aleena Johny</ProductInfo>
-            <Edition>Publisher</Edition>
-            <ProductInfo>Apress, 2022 </ProductInfo>
-            <Edition>Language</Edition>
-            <ProductInfo>English</ProductInfo>
-            <Edition>Format</Edition>
-            <ProductInfo>Paper book / ebook (PDF)</ProductInfo>
-            <MoreDetails>
+            <BasicAboutBookBox>
+              <KeyAboutBook>Authors</KeyAboutBook>
+              <ValueAboutBook>{bookDetails.authors}</ValueAboutBook>
+            </BasicAboutBookBox>
+            <BasicAboutBookBox>
+              <KeyAboutBook>Publisher</KeyAboutBook>
+              <ValueAboutBook>{bookDetails.publisher}</ValueAboutBook>
+            </BasicAboutBookBox>
+            <BasicAboutBookBox>
+              <KeyAboutBook>Year</KeyAboutBook>
+              <ValueAboutBook>{bookDetails.year}</ValueAboutBook>
+            </BasicAboutBookBox>
+            <BasicAboutBookBox>
+              <KeyAboutBook>Pages</KeyAboutBook>
+              <ValueAboutBook>{bookDetails.pages}</ValueAboutBook>
+            </BasicAboutBookBox>
+            <MoreDetails href="#">
               More detailse
-              <ChevronDownIcon
-                style={{ position: "absolute", top: 4, right: -22 }}
-              />
+              <ChevronDownIcon style={{ position: "absolute", top: 3, right: -2 }} />
             </MoreDetails>
-            <ButtonAddToCart type="submit">ADD TO CART</ButtonAddToCart>
-            <TextPreviewBook>Preview book</TextPreviewBook>
+            <ButtonAddToCart type="submit">Add to cart</ButtonAddToCart>
+            <TextPreviewBook href={`${bookDetails.pdf}`}>Preview book</TextPreviewBook>
           </InfoAboutBookBox>
         </PreviewBook>
       </BookInfoBox>
       <DescriptionList>
         <DescriptionItem>Description</DescriptionItem>
         <DescriptionItem>Authors</DescriptionItem>
-        <DescriptionItem>Reviews</DescriptionItem>
       </DescriptionList>
       <DescriptionBox>
-        <Description>
-          Start programming your own robots using Robot Operation System (ROS).
-          Targeted for absolute beginners in ROS, Linux, and Python, this guide
-          lets you build your own robotics projects. You'll learn the basic
-          foundation of Ubuntu Linux. Begin with the fundamentals. Installation
-          and useful commands will give you the basic tools you need while
-          programming a robot. Then add useful software applications that can be
-          used while making robots. Programming robots can be done using any of
-          the programming languages. Most popular programming languages are
-          Python and C++.
-        </Description>
+        <Description>{bookDetails.desc}</Description>
+        <Description>{bookDetails.authors}</Description>
       </DescriptionBox>
-      <SocialNetworksList>
-        <SocialNetworksItem>
-          <a href="https://www.facebook.com/" target="blank">
-            <FaceBookIcon />
-          </a>
-        </SocialNetworksItem>
-        <SocialNetworksItem>
-          <a href="https://twitter.com/" target="blank">
-            <TwitterIcon />
-          </a>
-        </SocialNetworksItem>
-        <SocialNetworksItem>
-          <MoreHorizontalIcon />
-        </SocialNetworksItem>
-      </SocialNetworksList>
       <SubscribeForm />
       <SimilarBookBox>
         <SimilarTitle>Similar Books</SimilarTitle>
@@ -105,9 +116,9 @@ export const BookPage = () => {
           <ArrowLeftIcon />
           <ArrowRightIcon />
         </ArrowsBox>
-        <BookItem />
-        <BookItem />
-        <BookItem />
+        {books.map((book) => {
+          return <BookItem book={book} {...book} key={book.isbn13} />;
+        })}
       </SimilarBookBox>
     </BookPageContainer>
   );

@@ -1,10 +1,9 @@
-import React from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { Button } from "../Button/Button";
-import { Label } from "../LabelForm/styles";
-import { Input } from "../SearchInput/Input";
+import { Input, Button, LabelForm } from "../index";
 import { ForgotPass, StyledFormSignIn } from "./styles";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
+import { ROUTE } from "../../routes";
 
 export interface Iprops {
   section: string;
@@ -33,7 +32,7 @@ export const SignInForm = ({ section }: Iprops) => {
   reset();
   return (
     <StyledFormSignIn onSubmit={handleSubmit(onsubmit)}>
-      <Label>Email</Label>
+      <LabelForm>Email</LabelForm>
       <Controller
         name="email"
         control={control}
@@ -50,7 +49,7 @@ export const SignInForm = ({ section }: Iprops) => {
         }}
       />
       {errors.email && <p>{errors.email.message}</p>}
-      <Label>Password</Label>
+      <LabelForm>Password</LabelForm>
       <Controller
         name="password"
         control={control}
@@ -67,7 +66,9 @@ export const SignInForm = ({ section }: Iprops) => {
         }}
       />
       {errors.password && <p>{errors.password.message}</p>}
-      <ForgotPass>Forgot password ?</ForgotPass>
+      <ForgotPass>
+        <Link to={`/${ROUTE.RESET_PASSWORD}`}>Forgot password ?</Link>
+      </ForgotPass>
       <Button type="submit">SIGN IN</Button>
     </StyledFormSignIn>
   );

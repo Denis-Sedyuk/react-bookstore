@@ -1,10 +1,6 @@
-import React from "react";
 import { NavItem, NavLinkIcon, NavList, StyledHeader } from "./styles";
-import { ReactComponent as Logo } from "../../assets/icons/bookstore.svg";
-import { ReactComponent as FavoritesIcon } from "../../assets/icons/favorites-icon.svg";
-import { ReactComponent as CartIcon } from "../../assets/icons/cart-icon.svg";
-import { ReactComponent as UserIcon } from "../../assets/icons/user-icon.svg";
-import { Input } from "../SearchInput/Input";
+import { Logo, FavoritesIcon, CartIcon, UserIcon } from "../../assets";
+import { Input } from "../index";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
@@ -53,7 +49,7 @@ export const Navbar = () => {
           </Link>
         </NavItem>
         <NavItem>
-          <Link to={ROUTE.SIGN_IN}>
+          <Link to={ROUTE.USER}>
             <UserIcon />
           </Link>
         </NavItem>

@@ -1,6 +1,5 @@
-import React from "react";
-import { ReactComponent as ArrowBackIcon } from "../../assets/icons/arrow-back-icon.svg";
-import { Title } from "../../components/SubscribeForm/styles";
+import { ArrowBackIcon } from "../../assets/index";
+import { Title } from "../../components/index";
 
 export const AccountPage = () => {
   return (

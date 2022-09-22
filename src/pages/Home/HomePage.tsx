@@ -1,14 +1,12 @@
-import React from "react";
-import { BookList } from "../../components/BookList/BookList";
-import { SubscribeForm } from "../../components/SubscribeForm/SubscribeForm";
-import { Title } from "../../components/Title/Title";
+import { BookList, SubscribeForm, Title } from "../../components/index";
+import { HomePageContainer } from "./styles";
 
 export const HomePage = () => {
   return (
-    <div>
+    <HomePageContainer>
       <Title>New Releases Books</Title>
       <BookList />
       <SubscribeForm />
-    </div>
+    </HomePageContainer>
   );
 };

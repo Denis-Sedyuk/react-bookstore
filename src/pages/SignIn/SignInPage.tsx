@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { SignInForm } from "../../components/SignInForm/SignInForm";
-import { SignUpForm } from "../../components/SignUpForm/SignUpForm";
-import { TabBar } from "../../components/TabBar/TabBar";
+import { useState } from "react";
+import { SignInForm, SignUpForm, TabBar } from "../../components/index";
 import { SignInContainer } from "./styles";
 
 export const SignInPage = () => {

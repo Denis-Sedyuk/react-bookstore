@@ -26,6 +26,7 @@ export const resetCSS = css`
 
   a {
     background-color: transparent;
+    text-decoration: none;
   }
 
   abbr[title] {
@@ -63,7 +64,7 @@ export const resetCSS = css`
   select,
   textarea {
     line-height: inherit;
-    border: 1px solid currentColor;
+    border: none;
   }
 
   button {

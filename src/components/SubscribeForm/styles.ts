@@ -9,14 +9,6 @@ export const StyledForm = styled.form`
   margin-top: 72px;
   padding-inline: 64px;
   padding-block: 56px;
-
-  ${Media.Tablet} {
-    margin: 0 40px;
-  }
-
-  ${Media.Mobile} {
-    margin: 0 24px;
-  }
 `;
 
 export const Title = styled.h3`
@@ -39,6 +31,10 @@ export const Subtitle = styled.p`
 export const InputForm = styled.div`
   width: 100%;
   display: flex;
+
+  ${Media.Mobile} {
+    flex-direction: column;
+  }
 `;
 
 export const SubscribeButton = styled.button`
@@ -48,4 +44,13 @@ export const SubscribeButton = styled.button`
   padding: 16px 40px;
   color: ${Color.White};
   min-width: 147px;
+  cursor: pointer;
+
+  ${Media.Tablet} {
+    min-width: 167px;
+  }
+
+  ${Media.Mobile} {
+    margin-top: 24px;
+  }
 `;

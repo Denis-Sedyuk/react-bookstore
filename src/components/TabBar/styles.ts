@@ -8,7 +8,7 @@ export const StyledTabBar = styled.div`
   border-bottom: none;
 `;
 
-export const SignButton = styled.button`
+export const Button = styled.button`
   font-weight: 700;
   font-size: 24px;
   line-height: 24px;
@@ -19,17 +19,17 @@ export const SignButton = styled.button`
   border-bottom: 1px solid ${Color.Gray};
   padding: 26px 0 22px;
 
-  :disabled {
+  &:disabled {
     color: ${Color.Secondary};
   }
 
-  :active {
+  &:active {
     color: ${Color.Primary};
     border-bottom: 1px solid ${Color.Primary};
   }
 
-  :hover {
-    border-bottom: 2px solid ${Color.Primary};
+  &:hover {
+    border-bottom: 1px solid ${Color.Primary};
     color: ${Color.Primary};
   }
 `;

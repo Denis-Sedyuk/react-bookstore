@@ -1,9 +1,6 @@
-import React from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Button } from "../Button/Button";
-import { Label } from "../LabelForm/styles";
-import { Input } from "../SearchInput/Input";
+import { Button, LabelForm, Input } from "../index";
 import { StyledForm } from "./styles";
 
 export interface Iprops {
@@ -31,7 +28,7 @@ export const SignUpForm = ({ section }: Iprops) => {
   reset();
   return (
     <StyledForm onSubmit={handleSubmit(onsubmit)}>
-      <Label>Name</Label>
+      <LabelForm>Name</LabelForm>
       <Controller
         control={control}
         name="userName"
@@ -47,7 +44,7 @@ export const SignUpForm = ({ section }: Iprops) => {
           );
         }}
       />
-      <Label>Email</Label>
+      <LabelForm>Email</LabelForm>
       <Controller
         control={control}
         name="email"
@@ -63,7 +60,7 @@ export const SignUpForm = ({ section }: Iprops) => {
           );
         }}
       />
-      <Label>Password</Label>
+      <LabelForm>Password</LabelForm>
       <Controller
         control={control}
         name="password"
@@ -79,7 +76,7 @@ export const SignUpForm = ({ section }: Iprops) => {
           );
         }}
       />
-      <Label>Confirm password</Label>
+      <LabelForm>Confirm password</LabelForm>
       <Controller
         control={control}
         name="confirmPassword"
@@ -95,7 +92,7 @@ export const SignUpForm = ({ section }: Iprops) => {
           );
         }}
       />
-      <Button type="submit">SIGN UP</Button>
+      <Button type="submit">Sign up</Button>
     </StyledForm>
   );
 };
