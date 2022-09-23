@@ -11,9 +11,11 @@ import { SignUpForm } from "../components/SignUpForm/SignUpForm";
 import { SubscribeForm } from "../components/SubscribeForm/SubscribeForm";
 import { TabBar } from "../components/TabBar/TabBar";
 import { Title } from "../components/Title/Title";
+import { ButtonBackPage } from "../components/ButtonBackPage/ButtonBackPage";
 
 export {
   BookItem,
+  ButtonBackPage,
   Input,
   Button,
   LabelForm,

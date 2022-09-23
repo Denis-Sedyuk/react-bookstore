@@ -5,7 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
 
-export interface Iprops {
+export interface IProps {
   section: string;
 }
 
@@ -14,7 +14,7 @@ export type SignInValues = {
   password: string;
 };
 
-export const SignInForm = ({ section }: Iprops) => {
+export const SignInForm = ({ section }: IProps) => {
   const {
     handleSubmit,
     reset,

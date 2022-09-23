@@ -1,12 +1,15 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { ArrowBackIcon } from "../../assets/index";
-import { Title } from "../../components/index";
-import { fetchBooks } from "../../store/feautures/bookSlice";
+import React, { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ButtonBackPage, Title } from "../../components/index";
 import { generateRandomId, setEmail } from "../../store/feautures/userSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getBooksDetails } from "../../store/selectors/bookDetailsSelectors";
 
 export const CartPage = () => {
+  useNavigate();
+  const navigate = useNavigate();
+  const handleBackPage = () => {
+    navigate(-1);
+  };
   // пример синхронного кода
 
   const { id, email } = useAppSelector((state) => state.user);
@@ -28,13 +31,9 @@ export const CartPage = () => {
 
   // сверху синхронный код
 
-  // useEffect(() => {
-  //   dispatch(fetchBooks());
-  // }, [dispatch]);
-
   return (
     <div>
-      <ArrowBackIcon />
+      <ButtonBackPage onCLick={handleBackPage} type="button" />
       <Title>Your cart</Title>
 
       <input type="text" value={newEmail} onChange={handleNewEmail}></input>
@@ -43,8 +42,6 @@ export const CartPage = () => {
 
       <h2>{id}</h2>
       <button onClick={handleNewId}>Click</button>
-
-      <div></div>
     </div>
   );
 };

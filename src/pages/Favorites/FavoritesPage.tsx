@@ -1,10 +1,15 @@
-import { ArrowBackIcon } from "../../assets/index";
-import { Title } from "../../components/index";
+import { useNavigate } from "react-router-dom";
+import { ButtonBackPage, Title } from "../../components/index";
 
 export const FavoritesPage = () => {
+  useNavigate();
+  const navigate = useNavigate();
+  const handleBackPage = () => {
+    navigate(-1);
+  };
   return (
     <div>
-      <ArrowBackIcon />
+      <ButtonBackPage onCLick={handleBackPage} type="button" />
       <Title>Favorites</Title>
     </div>
   );

@@ -1,11 +1,19 @@
-import { ArrowBackIcon } from "../../assets/index";
-import { Title } from "../../components/index";
+import { useNavigate } from "react-router-dom";
+import { ButtonBackPage, Input, LabelForm, Title } from "../../components/index";
+import { StyledAccountContainer, UserSubTitle } from "./styles";
 
 export const AccountPage = () => {
+  useNavigate();
+  const navigate = useNavigate();
+  const handleBackPage = () => {
+    navigate(-1);
+  };
   return (
-    <div>
-      <ArrowBackIcon />
+    <StyledAccountContainer>
+      <ButtonBackPage onCLick={handleBackPage} type="button" />
       <Title>Account</Title>
-    </div>
+      <UserSubTitle>Profile</UserSubTitle>
+      <LabelForm>Name</LabelForm>
+    </StyledAccountContainer>
   );
 };

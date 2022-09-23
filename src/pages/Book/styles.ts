@@ -1,16 +1,22 @@
 import styled from "styled-components";
 import { Button } from "../../components/Button/Button";
 import { Color } from "../../ui/colors";
+import { Media } from "../../ui/media";
 
 export const BookPageContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 40px;
+
+  ${Media.Mobile} {
+    padding: 0 24px;
+  }
 `;
 
 export const TitleBox = styled.div`
   display: flex;
-  flex-direction: column;
   text-align: start;
+  flex-direction: column;
   width: 100%;
 `;
 
@@ -19,6 +25,12 @@ export const BookInfoBox = styled.div`
   grid-template-columns: 1fr 1fr;
   column-gap: 128px;
   margin-top: 10px;
+
+  ${Media.Tablet} {
+    grid-template-columns: 1fr;
+    place-items: center;
+    row-gap: 48px;
+  }
 `;
 
 export const BookPhotoBox = styled.div`
@@ -43,6 +55,7 @@ export const CostStarBox = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
 `;
 
 export const Price = styled.span`
@@ -54,7 +67,7 @@ export const Price = styled.span`
   line-height: 60px;
 `;
 
-export const Rating = styled.p`
+export const RatingStars = styled.div`
   font-size: 40px;
 `;
 
@@ -86,15 +99,17 @@ export const ValueAboutBook = styled.span`
   line-height: 32px;
 `;
 
-export const MoreDetails = styled.a`
+export const MoreDetails = styled.button`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   position: relative;
   max-width: 121px;
+  background: ${Color.White};
   color: ${Color.Primary};
   margin: 14px 0 60px;
   text-align: start;
+  cursor: pointer;
 `;
 
 export const ButtonAddToCart = styled(Button)`
@@ -108,10 +123,12 @@ export const ButtonAddToCart = styled(Button)`
 `;
 
 export const TextPreviewBook = styled.a`
+  place-self: center;
   margin-top: 40px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  max-width: 120px;
   color: ${Color.Primary};
 `;
 
@@ -157,21 +174,21 @@ export const Description = styled.p`
 `;
 
 export const SimilarBookBox = styled.div`
-  margin-top: 72px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 32px;
-  row-gap: 48px;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-content: center;
+  column-gap: 32px;
+  row-gap: 48px;
+  margin-top: 72px;
 `;
 
 export const SimilarTitle = styled.h3`
-  grid-column: span 2;
-  text-align: start;
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
+  text-align: start;
+  grid-column: span 2;
 `;
 
 export const ArrowsBox = styled.div`

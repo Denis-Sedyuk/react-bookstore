@@ -1,5 +1,5 @@
-import { ArrowBackIcon, ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from "../../assets/index";
-import { Title, BookItem, SubscribeForm } from "../../components/index";
+import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from "../../assets/index";
+import { Title, BookItem, SubscribeForm, ButtonBackPage } from "../../components/index";
 import {
   ArrowsBox,
   BookInfoBox,
@@ -21,32 +21,34 @@ import {
   Photo,
   BookPhotoBox,
   CostStarBox,
-  Rating,
   ValueAboutBook,
   BasicAboutBookBox,
 } from "./styles";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getBooksDetails } from "../../store/selectors/bookDetailsSelectors";
 import { fetchBookDetails } from "../../store/feautures/bookDetailsSlice";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { getBooks } from "../../store/selectors/bookSelectors";
 import { fetchBooks } from "../../store/feautures/bookSlice";
+import { Rating } from "react-simple-star-rating";
+import { Color } from "../../ui/colors";
 
 export const BookPage = () => {
+  useNavigate();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { books } = useAppSelector(getBooks);
-
-  useEffect(() => {
-    dispatch(fetchBooks());
-  }, [dispatch]);
 
   const { isbn13 } = useParams();
 
   const { isLoading, error, bookDetails } = useAppSelector(getBooksDetails);
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchBookDetails(isbn13!));
+    dispatch(fetchBookDetails(isbn13 as string));
   }, [dispatch, isbn13]);
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -56,14 +58,14 @@ export const BookPage = () => {
     return <h1>Error</h1>;
   }
 
+  const handleBackPage = () => {
+    navigate(-1);
+  };
+
   return (
     <BookPageContainer>
-      <h2>{bookDetails.subtitle}</h2>
-      <h2>{bookDetails.isbn10}</h2>
-      <h2>{bookDetails.url}</h2>
-      {/* <h2>{bookDetails.pdf}</h2> */}
       <TitleBox>
-        <ArrowBackIcon />
+        <ButtonBackPage onCLick={handleBackPage} type="button" />
         <Title>{bookDetails.title}</Title>
       </TitleBox>
       <BookInfoBox>
@@ -73,7 +75,7 @@ export const BookPage = () => {
         <PreviewBook>
           <CostStarBox>
             <Price>{bookDetails.price === "$0.00" ? "Is free" : bookDetails.price}</Price>
-            <Rating>{bookDetails.rating}</Rating>
+            <Rating ratingValue={+bookDetails.rating * 20} size={25} fillColor={Color.Primary} />
           </CostStarBox>
           <InfoAboutBookBox>
             <BasicAboutBookBox>
@@ -92,12 +94,12 @@ export const BookPage = () => {
               <KeyAboutBook>Pages</KeyAboutBook>
               <ValueAboutBook>{bookDetails.pages}</ValueAboutBook>
             </BasicAboutBookBox>
-            <MoreDetails href="#">
+            <MoreDetails type="button">
               More detailse
-              <ChevronDownIcon style={{ position: "absolute", top: 3, right: -2 }} />
+              <ChevronDownIcon style={{ position: "absolute", top: 4, right: -2 }} />
             </MoreDetails>
             <ButtonAddToCart type="submit">Add to cart</ButtonAddToCart>
-            <TextPreviewBook href={`${bookDetails.pdf}`}>Preview book</TextPreviewBook>
+            <TextPreviewBook href={`${bookDetails.url}`}>Preview book</TextPreviewBook>
           </InfoAboutBookBox>
         </PreviewBook>
       </BookInfoBox>
@@ -120,6 +122,10 @@ export const BookPage = () => {
           return <BookItem book={book} {...book} key={book.isbn13} />;
         })}
       </SimilarBookBox>
+      {/* <h2>{bookDetails.subtitle}</h2>
+      <h2>{bookDetails.isbn10}</h2>
+      <h2>{bookDetails.url}</h2>
+      <h2>{bookDetails.pdf}</h2> */}
     </BookPageContainer>
   );
 };

@@ -3,7 +3,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Button, LabelForm, Input } from "../index";
 import { StyledForm } from "./styles";
 
-export interface Iprops {
+export interface IProps {
   section: string;
 }
 
@@ -14,7 +14,7 @@ export type SignUpValues = {
   confirmPassword: string;
 };
 
-export const SignUpForm = ({ section }: Iprops) => {
+export const SignUpForm = ({ section }: IProps) => {
   const { handleSubmit, reset, control } = useForm<SignUpValues>();
 
   const onsubmit: SubmitHandler<SignUpValues> = ({ email, password }) => {

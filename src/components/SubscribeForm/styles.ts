@@ -9,6 +9,10 @@ export const StyledForm = styled.form`
   margin-top: 72px;
   padding-inline: 64px;
   padding-block: 56px;
+
+  ${Media.Tablet} {
+    padding-inline: 40px;
+  }
 `;
 
 export const Title = styled.h3`
