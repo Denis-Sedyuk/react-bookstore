@@ -15,7 +15,6 @@ import { ButtonBackPage } from "../components/ButtonBackPage/ButtonBackPage";
 
 export {
   BookItem,
-  ButtonBackPage,
   Input,
   Button,
   LabelForm,
@@ -28,4 +27,5 @@ export {
   SubscribeForm,
   TabBar,
   Title,
+  ButtonBackPage,
 };

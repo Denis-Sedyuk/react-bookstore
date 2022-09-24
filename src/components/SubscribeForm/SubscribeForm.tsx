@@ -10,7 +10,6 @@ export const SubscribeForm = () => {
   const { handleSubmit, reset, control } = useForm<SubscribeValues>();
 
   const onsubmit: SubmitHandler<SubscribeValues> = (data) => {
-    console.log(data);
     //  Тут нужно записать данные в редакс
   };
 

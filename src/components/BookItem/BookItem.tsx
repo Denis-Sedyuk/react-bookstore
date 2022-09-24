@@ -1,7 +1,6 @@
 import { BookPhotoBox, BookSubTitle, BookTitle, Photo, Price, StyledItem } from "./styles";
 import { Link } from "react-router-dom";
 import { IBook } from "../../types/types";
-import { ROUTE } from "../../routes";
 
 interface IProps {
   book: IBook;

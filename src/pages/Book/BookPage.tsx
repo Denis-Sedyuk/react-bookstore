@@ -27,7 +27,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getBooksDetails } from "../../store/selectors/bookDetailsSelectors";
 import { fetchBookDetails } from "../../store/feautures/bookDetailsSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getBooks } from "../../store/selectors/bookSelectors";
 import { fetchBooks } from "../../store/feautures/bookSlice";

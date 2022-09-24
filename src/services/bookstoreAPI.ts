@@ -26,6 +26,3 @@ class BookAPI {
 }
 
 export const bookAPI = new BookAPI();
-
-// {`${ROUTE.BOOK}:isbn13`}
-// `Endpoint.BOOK${isbn13}`

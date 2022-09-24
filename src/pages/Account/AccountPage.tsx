@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ButtonBackPage, Input, LabelForm, Title } from "../../components/index";
+import { ButtonBackPage, LabelForm, Title } from "../../components/index";
 import { StyledAccountContainer, UserSubTitle } from "./styles";
 
 export const AccountPage = () => {

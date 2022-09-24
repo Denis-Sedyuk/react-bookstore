@@ -3,7 +3,7 @@ import { LabelForm, Input, Button } from "../../components/index";
 import { FormStyled, Title } from "./styles";
 
 export const ResetPage = () => {
-  const { handleSubmit, reset, control } = useForm();
+  const { control } = useForm();
 
   return (
     <FormStyled>

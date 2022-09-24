@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../components/Button/Button";
+import { Button } from "../../components/index";
 import { Color } from "../../ui/colors";
 import { Media } from "../../ui/media";
 

@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
 import { MainTemplate } from "./components/index";
+import { Routes, Route } from "react-router-dom";
 import {
   AccountPage,
   BookPage,
@@ -11,7 +11,6 @@ import {
   SearchPage,
   SignInPage,
 } from "./pages/index";
-
 import { ROUTE } from "./routes";
 
 export const App = () => {

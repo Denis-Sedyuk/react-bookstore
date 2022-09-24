@@ -1,8 +1,9 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ButtonBackPage, Title } from "../../components/index";
 import { generateRandomId, setEmail } from "../../store/feautures/userSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { CartPageContainer } from "./styles";
 
 export const CartPage = () => {
   useNavigate();
@@ -32,7 +33,7 @@ export const CartPage = () => {
   // сверху синхронный код
 
   return (
-    <div>
+    <CartPageContainer>
       <ButtonBackPage onCLick={handleBackPage} type="button" />
       <Title>Your cart</Title>
 
@@ -42,6 +43,6 @@ export const CartPage = () => {
 
       <h2>{id}</h2>
       <button onClick={handleNewId}>Click</button>
-    </div>
+    </CartPageContainer>
   );
 };

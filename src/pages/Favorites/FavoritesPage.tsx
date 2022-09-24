@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ButtonBackPage, Title } from "../../components/index";
+import { FavoritePageContainer } from "./styles";
 
 export const FavoritesPage = () => {
   useNavigate();
@@ -8,9 +9,9 @@ export const FavoritesPage = () => {
     navigate(-1);
   };
   return (
-    <div>
+    <FavoritePageContainer>
       <ButtonBackPage onCLick={handleBackPage} type="button" />
       <Title>Favorites</Title>
-    </div>
+    </FavoritePageContainer>
   );
 };

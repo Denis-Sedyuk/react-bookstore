@@ -1,4 +1,3 @@
-import React from "react";
 import { BookList, Title } from "../../components/index";
 import { ResultFound, SearchPageContainer } from "./styles";
 

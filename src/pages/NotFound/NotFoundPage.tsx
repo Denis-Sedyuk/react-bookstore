@@ -1,9 +1,9 @@
-import React from "react";
+import { NotFoundPageContainer } from "./styles";
 
 export const NotFoundPage = () => {
   return (
-    <div>
+    <NotFoundPageContainer>
       <h1>ERROR 404</h1>
-    </div>
+    </NotFoundPageContainer>
   );
 };
