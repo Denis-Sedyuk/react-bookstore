@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ButtonBackPage, Title } from "../../components/index";
+import { useAppSelector } from "../../store/hooks";
+import { getUser } from "../../store/selectors/userSelectors";
 import { FavoritePageContainer } from "./styles";
 
 export const FavoritesPage = () => {

@@ -1,9 +1,10 @@
 import { NavItem, NavLinkIcon, NavList, StyledHeader } from "./styles";
-import { Logo, FavoritesIcon, CartIcon, UserIcon } from "../../assets";
+import { Logo, FavoritesIcon, CartIcon, UserIcon, AccountIcon } from "../../assets/index";
 import { Input } from "../index";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { CHangeTheme } from "../index";
 
 export type NavBarValues = {
   search: string;
@@ -52,6 +53,14 @@ export const Navbar = () => {
           <Link to={ROUTE.USER}>
             <UserIcon />
           </Link>
+        </NavItem>
+        <NavItem>
+          <Link to={ROUTE.ACCOUNT}>
+            <AccountIcon />
+          </Link>
+        </NavItem>
+        <NavItem>
+          <CHangeTheme />
         </NavItem>
       </NavList>
     </StyledHeader>

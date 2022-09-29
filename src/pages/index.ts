@@ -7,6 +7,7 @@ import { NotFoundPage } from "./NotFound/NotFoundPage";
 import { ResetPage } from "./Reset/ResetPage";
 import { SearchPage } from "./Search/SearchPage";
 import { SignInPage } from "./SignIn/SignInPage";
+import { RequareAuth } from "../components/RequareAuth/RequareAuth";
 
 export {
   AccountPage,
@@ -18,4 +19,5 @@ export {
   ResetPage,
   SearchPage,
   SignInPage,
+  RequareAuth,
 };

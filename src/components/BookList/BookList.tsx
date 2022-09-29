@@ -24,7 +24,7 @@ export const BookList = () => {
   return (
     <StyledBookList>
       {books.map((book) => {
-        return <BookItem book={book} {...book} key={book.isbn13} />;
+        return <BookItem book={book} key={book.isbn13} />;
       })}
     </StyledBookList>
   );

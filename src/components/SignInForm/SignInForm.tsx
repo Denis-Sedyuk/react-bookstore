@@ -1,9 +1,12 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { Input, Button, LabelForm } from "../index";
-import { ForgotPass, StyledFormSignIn } from "./styles";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { ErrorDesc, ForgotPass, StyledFormSignIn } from "./styles";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../routes";
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { getUser } from "../../store/selectors/userSelectors";
+import { fetchSignInUser } from "../../store/feautures/userSlice";
 
 export interface IProps {
   section: string;
@@ -15,21 +18,30 @@ export type SignInValues = {
 };
 
 export const SignInForm = ({ section }: IProps) => {
+  const { error } = useAppSelector(getUser);
+  const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const {
     handleSubmit,
     reset,
     formState: { errors },
     control,
-  } = useForm<SignInValues>();
+  } = useForm<SignInValues>({
+    defaultValues: { email: "", password: "" },
+  });
 
-  const onsubmit: SubmitHandler<SignInValues> = ({ email, password }) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      const user = userCredential.user;
-    });
+  const onsubmit: SubmitHandler<SignInValues> = (userInfo) => {
+    setIsLoading(false);
+    dispatch(fetchSignInUser(userInfo))
+      .then(() => {
+        // navigate(ROUTE.HOME);
+      })
+      .finally(() => {
+        reset();
+      });
   };
 
-  reset();
   return (
     <StyledFormSignIn onSubmit={handleSubmit(onsubmit)}>
       <LabelForm>Email</LabelForm>
@@ -48,7 +60,7 @@ export const SignInForm = ({ section }: IProps) => {
           );
         }}
       />
-      {errors.email && <p>{errors.email.message}</p>}
+      {errors.email && <ErrorDesc>{errors.email.message}</ErrorDesc>}
       <LabelForm>Password</LabelForm>
       <Controller
         name="password"
@@ -65,11 +77,12 @@ export const SignInForm = ({ section }: IProps) => {
           );
         }}
       />
-      {errors.password && <p>{errors.password.message}</p>}
+      {errors.password && <ErrorDesc>{errors.password.message}</ErrorDesc>}
       <ForgotPass>
         <Link to={`/${ROUTE.RESET_PASSWORD}`}>Forgot password ?</Link>
       </ForgotPass>
-      <Button type="submit">SIGN IN</Button>
+      {error && <ErrorDesc>{error}</ErrorDesc>}
+      <Button type="submit">{isLoading ? "Loading..." : "Sign in"}</Button>
     </StyledFormSignIn>
   );
 };

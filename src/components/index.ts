@@ -12,6 +12,9 @@ import { SubscribeForm } from "../components/SubscribeForm/SubscribeForm";
 import { TabBar } from "../components/TabBar/TabBar";
 import { Title } from "../components/Title/Title";
 import { ButtonBackPage } from "../components/ButtonBackPage/ButtonBackPage";
+import { CheckMode } from "../components/CheckMode/CheckMode";
+import { RequareAuth } from "../components/RequareAuth/RequareAuth";
+import { CHangeTheme } from "./ChangeTheme/CHangeTheme";
 
 export {
   BookItem,
@@ -28,4 +31,7 @@ export {
   TabBar,
   Title,
   ButtonBackPage,
+  CheckMode,
+  RequareAuth,
+  CHangeTheme,
 };

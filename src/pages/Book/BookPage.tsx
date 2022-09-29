@@ -1,5 +1,5 @@
 import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from "../../assets/index";
-import { Title, BookItem, SubscribeForm, ButtonBackPage } from "../../components/index";
+import { Title, SubscribeForm, ButtonBackPage, CheckMode } from "../../components/index";
 import {
   ArrowsBox,
   BookInfoBox,
@@ -13,42 +13,35 @@ import {
   KeyAboutBook,
   MoreDetails,
   TextPreviewBook,
-  DescriptionList,
-  DescriptionItem,
   DescriptionBox,
-  Description,
   ButtonAddToCart,
   Photo,
   BookPhotoBox,
   CostStarBox,
   ValueAboutBook,
   BasicAboutBookBox,
+  Description,
 } from "./styles";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getBooksDetails } from "../../store/selectors/bookDetailsSelectors";
 import { fetchBookDetails } from "../../store/feautures/bookDetailsSlice";
-import { useEffect } from "react";
+import { getBooksDetails } from "../../store/selectors/bookDetailsSelectors";
 import { useNavigate, useParams } from "react-router-dom";
-import { getBooks } from "../../store/selectors/bookSelectors";
-import { fetchBooks } from "../../store/feautures/bookSlice";
 import { Rating } from "react-simple-star-rating";
 import { Color } from "../../ui/colors";
+import { useToggle } from "../../hooks/useToggle";
 
 export const BookPage = () => {
-  useNavigate();
+  const [isOpen, toggleIsOpen] = useToggle();
+  const [mode, setMode] = useState("description");
   const navigate = useNavigate();
+  const { isbn13 = "" } = useParams();
   const dispatch = useAppDispatch();
-  const { books } = useAppSelector(getBooks);
-
-  const { isbn13 } = useParams();
 
   const { isLoading, error, bookDetails } = useAppSelector(getBooksDetails);
-  useEffect(() => {
-    dispatch(fetchBooks());
-  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchBookDetails(isbn13 as string));
+    dispatch(fetchBookDetails(isbn13));
   }, [dispatch, isbn13]);
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -62,54 +55,87 @@ export const BookPage = () => {
     navigate(-1);
   };
 
+  const handleDetalise = (): void => {
+    toggleIsOpen();
+  };
+  const {
+    title,
+    image,
+    price,
+    rating,
+    authors,
+    publisher,
+    year,
+    pages,
+    url,
+    desc,
+    subtitle,
+    pdf,
+    isbn10,
+  } = bookDetails;
   return (
     <BookPageContainer>
       <TitleBox>
         <ButtonBackPage onCLick={handleBackPage} type="button" />
-        <Title>{bookDetails.title}</Title>
+        <Title>{title}</Title>
       </TitleBox>
       <BookInfoBox>
         <BookPhotoBox>
-          <Photo src={bookDetails.image} />
+          <Photo src={image} />
         </BookPhotoBox>
         <PreviewBook>
           <CostStarBox>
-            <Price>{bookDetails.price === "$0.00" ? "Is free" : bookDetails.price}</Price>
-            <Rating ratingValue={+bookDetails.rating * 20} size={25} fillColor={Color.Primary} />
+            <Price>{price === "$0.00" ? "Is free" : bookDetails.price}</Price>
+            <Rating
+              readonly={true}
+              ratingValue={+rating * 20}
+              size={25}
+              fillColor={Color.Primary}
+            />
           </CostStarBox>
           <InfoAboutBookBox>
             <BasicAboutBookBox>
               <KeyAboutBook>Authors</KeyAboutBook>
-              <ValueAboutBook>{bookDetails.authors}</ValueAboutBook>
+              <ValueAboutBook>{authors}</ValueAboutBook>
             </BasicAboutBookBox>
             <BasicAboutBookBox>
               <KeyAboutBook>Publisher</KeyAboutBook>
-              <ValueAboutBook>{bookDetails.publisher}</ValueAboutBook>
+              <ValueAboutBook>{publisher}</ValueAboutBook>
             </BasicAboutBookBox>
             <BasicAboutBookBox>
               <KeyAboutBook>Year</KeyAboutBook>
-              <ValueAboutBook>{bookDetails.year}</ValueAboutBook>
+              <ValueAboutBook>{year}</ValueAboutBook>
             </BasicAboutBookBox>
             <BasicAboutBookBox>
               <KeyAboutBook>Pages</KeyAboutBook>
-              <ValueAboutBook>{bookDetails.pages}</ValueAboutBook>
+              <ValueAboutBook>{pages}</ValueAboutBook>
             </BasicAboutBookBox>
-            <MoreDetails type="button">
+            {isOpen && (
+              <>
+                <BasicAboutBookBox>
+                  <KeyAboutBook>Link</KeyAboutBook>
+                  <ValueAboutBook>{url}</ValueAboutBook>
+                </BasicAboutBookBox>
+                <BasicAboutBookBox>
+                  <KeyAboutBook>Article</KeyAboutBook>
+                  <ValueAboutBook>{isbn10}</ValueAboutBook>
+                </BasicAboutBookBox>
+              </>
+            )}
+            <MoreDetails type="button" onClick={handleDetalise}>
               More detailse
               <ChevronDownIcon style={{ position: "absolute", top: 4, right: -2 }} />
             </MoreDetails>
             <ButtonAddToCart type="submit">Add to cart</ButtonAddToCart>
-            <TextPreviewBook href={`${bookDetails.url}`}>Preview book</TextPreviewBook>
+            <TextPreviewBook href={Object.values(pdf)[0]} target="_blank">
+              Preview book
+            </TextPreviewBook>
           </InfoAboutBookBox>
         </PreviewBook>
       </BookInfoBox>
-      <DescriptionList>
-        <DescriptionItem>Description</DescriptionItem>
-        <DescriptionItem>Authors</DescriptionItem>
-      </DescriptionList>
+      <CheckMode mode={mode} setMode={setMode} />
       <DescriptionBox>
-        <Description>{bookDetails.desc}</Description>
-        <Description>{bookDetails.authors}</Description>
+        <Description>{mode === "description" ? desc : authors}</Description>
       </DescriptionBox>
       <SubscribeForm />
       <SimilarBookBox>
@@ -118,14 +144,7 @@ export const BookPage = () => {
           <ArrowLeftIcon />
           <ArrowRightIcon />
         </ArrowsBox>
-        {books.map((book) => {
-          return <BookItem book={book} {...book} key={book.isbn13} />;
-        })}
       </SimilarBookBox>
-      {/* <h2>{bookDetails.subtitle}</h2>
-      <h2>{bookDetails.isbn10}</h2>
-      <h2>{bookDetails.url}</h2>
-      <h2>{bookDetails.pdf}</h2> */}
     </BookPageContainer>
   );
 };

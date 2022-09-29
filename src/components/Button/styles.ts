@@ -11,4 +11,8 @@ export const StyledButton = styled.button`
   line-height: 24px;
   padding: 16px 40px;
   cursor: pointer;
+
+  &:hover {
+    background-color: ${Color.Primary_Light};
+  }
 `;

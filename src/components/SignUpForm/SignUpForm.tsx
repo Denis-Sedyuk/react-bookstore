@@ -1,7 +1,13 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "../../routes";
+import { fetchSignUpUser } from "../../store/feautures/userSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { getUser } from "../../store/selectors/userSelectors";
+import { FirebaseError } from "../../utils/firebaseErrors";
 import { Button, LabelForm, Input } from "../index";
-import { StyledForm } from "./styles";
+import { ErrorDesc, StyledForm } from "./styles";
 
 export interface IProps {
   section: string;
@@ -15,23 +21,38 @@ export type SignUpValues = {
 };
 
 export const SignUpForm = ({ section }: IProps) => {
-  const { handleSubmit, reset, control } = useForm<SignUpValues>();
+  const { error } = useAppSelector(getUser);
+  const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const {
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm<SignUpValues>({
+    defaultValues: { userName: "", email: "", password: "", confirmPassword: "" },
+  });
 
-  const onsubmit: SubmitHandler<SignUpValues> = ({ email, password }) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      const user = userCredential.user;
-    });
+  const onsubmit: SubmitHandler<SignUpValues> = (userInfo) => {
+    setIsLoading(true);
+    dispatch(fetchSignUpUser(userInfo))
+      .then(() => {
+        // navigate(ROUTE.HOME);
+      })
+      .finally(() => {
+        reset();
+      });
   };
-
-  // //  Тут нужно записать данные в store
-  reset();
   return (
     <StyledForm onSubmit={handleSubmit(onsubmit)}>
       <LabelForm>Name</LabelForm>
       <Controller
         control={control}
         name="userName"
+        rules={{
+          required: "Please enter your name",
+        }}
         render={({ field: { onChange, value } }) => {
           return (
             <Input
@@ -44,6 +65,7 @@ export const SignUpForm = ({ section }: IProps) => {
           );
         }}
       />
+      {errors.userName && <ErrorDesc>{errors.userName.message}</ErrorDesc>}
       <LabelForm>Email</LabelForm>
       <Controller
         control={control}
@@ -92,7 +114,8 @@ export const SignUpForm = ({ section }: IProps) => {
           );
         }}
       />
-      <Button type="submit">Sign up</Button>
+      {error && <ErrorDesc>{error}</ErrorDesc>}
+      <Button type="submit">{isLoading ? "Loading..." : "Sign up"}</Button>
     </StyledForm>
   );
 };

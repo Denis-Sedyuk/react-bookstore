@@ -2,9 +2,9 @@ import axios from "axios";
 import { IBookDetails, IBookItem } from "../types/types";
 
 enum Endpoint {
-  SEARCH = "search/",
   NEW = "new",
   BOOK = "books/",
+  SEARCH = "search/",
 }
 
 class BookAPI {
@@ -21,6 +21,11 @@ class BookAPI {
 
   public async getDetailsBook(isbn13: string) {
     const { data } = await this.API.get<IBookDetails>(`${Endpoint.BOOK}${isbn13}`);
+    return data;
+  }
+
+  public async getSearchBook() {
+    const { data } = await this.API.get(`${Endpoint.SEARCH}`);
     return data;
   }
 }

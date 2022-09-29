@@ -19,13 +19,9 @@ export const Button = styled.button`
   border-bottom: 1px solid ${Color.Gray};
   padding: 26px 0 22px;
 
-  &:disabled {
-    color: ${Color.Secondary};
-  }
-
-  &:active {
-    color: ${Color.Primary};
+  &:focus {
     border-bottom: 1px solid ${Color.Primary};
+    color: ${Color.Primary};
   }
 
   &:hover {

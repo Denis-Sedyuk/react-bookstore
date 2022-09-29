@@ -27,10 +27,7 @@ const initialState: DetailsState = {
     price: "",
     image: "",
     url: "",
-    pdf: {
-      "Chapter 2": "",
-      "Chapter 5": "",
-    },
+    pdf: {},
   },
 };
 export const fetchBookDetails = createAsyncThunk<IBookDetails, string, { rejectValue: string }>(

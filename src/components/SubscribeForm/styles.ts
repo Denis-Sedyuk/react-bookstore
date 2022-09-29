@@ -50,6 +50,10 @@ export const SubscribeButton = styled.button`
   min-width: 147px;
   cursor: pointer;
 
+  &:hover {
+    background-color: ${Color.Primary_Light};
+  }
+
   ${Media.Tablet} {
     min-width: 167px;
   }

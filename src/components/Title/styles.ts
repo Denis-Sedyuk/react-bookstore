@@ -6,7 +6,8 @@ export const StyledTitle = styled.h1`
   font-weight: 700;
   font-size: 56px;
   line-height: 64px;
-  color: ${Color.Primary};
+  /* color: ${Color.Primary}; */
+  color: var(--Primary);
   text-align: start;
 
   ${Media.Mobile} {

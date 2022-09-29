@@ -1,5 +1,5 @@
 export interface IBook {
-  books: any;
+  books: IBook[];
   title: string;
   subtitle: string;
   isbn13: string;
@@ -29,5 +29,9 @@ export interface IBookDetails {
   price: string;
   image: string;
   url: string;
-  pdf: { [key: string]: string };
+  pdf: IPdf;
+}
+
+export interface IPdf {
+  [key: string]: string;
 }

@@ -13,6 +13,7 @@ export const TabBar = ({ setSection }: IProps) => {
   const handleSetSignUp = () => {
     setSection("SignUp");
   };
+
   return (
     <StyledTabBar>
       <Button onClick={handleSetSignIn}>Sign in</Button>

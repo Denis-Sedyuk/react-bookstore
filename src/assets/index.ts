@@ -9,6 +9,7 @@ import { ReactComponent as MoreHorizontalIcon } from "./icons/more-horizontal.sv
 import { ReactComponent as ArrowLeftIcon } from "./icons/arrow-left.svg";
 import { ReactComponent as ArrowRightIcon } from "./icons/arrow-right.svg";
 import { ReactComponent as ChevronDownIcon } from "./icons/chevron-down.svg";
+import { ReactComponent as AccountIcon } from "./icons/account.svg";
 
 export {
   Logo,
@@ -22,4 +23,5 @@ export {
   ArrowLeftIcon,
   ArrowRightIcon,
   ChevronDownIcon,
+  AccountIcon,
 };
