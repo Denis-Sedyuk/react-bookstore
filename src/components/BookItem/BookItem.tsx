@@ -1,4 +1,12 @@
-import { BookPhotoBox, BookSubTitle, BookTitle, Photo, Price, StyledItem } from "./styles";
+import {
+  BookInfo,
+  BookPhotoBox,
+  BookSubTitle,
+  BookTitle,
+  Photo,
+  Price,
+  StyledItem,
+} from "./styles";
 import { Link } from "react-router-dom";
 import { IBook } from "../../types/types";
 
@@ -13,9 +21,13 @@ export const BookItem = ({ book }: IProps) => {
         <BookPhotoBox>
           <Photo src={book.image} />
         </BookPhotoBox>
-        <BookTitle>{book.title}</BookTitle>
-        <BookSubTitle>{book.subtitle ? book.subtitle : "Description will come later"}</BookSubTitle>
-        <Price>{book.price === "$0.00" ? "This book is free" : book.price}</Price>
+        <BookInfo>
+          <BookTitle>{book.title}</BookTitle>
+          <BookSubTitle>
+            {book.subtitle ? book.subtitle : "Description will come later"}
+          </BookSubTitle>
+          <Price>{book.price === "$0.00" ? "This book is free" : book.price}</Price>
+        </BookInfo>
       </StyledItem>
     </Link>
   );

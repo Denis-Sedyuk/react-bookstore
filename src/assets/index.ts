@@ -10,6 +10,11 @@ import { ReactComponent as ArrowLeftIcon } from "./icons/arrow-left.svg";
 import { ReactComponent as ArrowRightIcon } from "./icons/arrow-right.svg";
 import { ReactComponent as ChevronDownIcon } from "./icons/chevron-down.svg";
 import { ReactComponent as AccountIcon } from "./icons/account.svg";
+import { ReactComponent as BurgerIcon } from "./icons/burger.svg";
+import { ReactComponent as CloseIcon } from "./icons/close.svg";
+import { ReactComponent as HeartIcon } from "./icons/heart.svg";
+import { ReactComponent as LikeIcon } from "./icons/like.svg";
+import { ReactComponent as DisLikeIcon } from "./icons/dislike.svg";
 
 export {
   Logo,
@@ -24,4 +29,9 @@ export {
   ArrowRightIcon,
   ChevronDownIcon,
   AccountIcon,
+  BurgerIcon,
+  CloseIcon,
+  HeartIcon,
+  LikeIcon,
+  DisLikeIcon,
 };

@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { Input, Button, LabelForm } from "../index";
+import { Input, Button, LabelForm, Spinner } from "../index";
 import { ErrorDesc, ForgotPass, StyledFormSignIn } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../routes";

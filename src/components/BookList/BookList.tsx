@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { fetchBooks } from "../../store/feautures/bookSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getBooks } from "../../store/selectors/bookSelectors";
-import { BookItem } from "../index";
+import { BookItem, Spinner, Error } from "../index";
 import { StyledBookList } from "./styles";
 
 export const BookList = () => {
@@ -14,11 +14,11 @@ export const BookList = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Spinner />;
   }
 
   if (error) {
-    return <h1>Error</h1>;
+    return <Error />;
   }
 
   return (

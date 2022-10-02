@@ -1,3 +1,4 @@
+import { useToggle } from "../../hooks/useToggle";
 import { Button, StyledTabBar } from "./styles";
 
 interface IProps {
@@ -6,18 +7,29 @@ interface IProps {
 }
 
 export const TabBar = ({ setSection }: IProps) => {
+  const [isActiveSignIn, toggleIsActiveSignIn] = useToggle(true);
+  const [isActiveSignUp, toggleIsActiveSignUp] = useToggle(false);
+
   const handleSetSignIn = () => {
     setSection("SignIn");
+    toggleIsActiveSignIn();
+    toggleIsActiveSignUp();
   };
 
   const handleSetSignUp = () => {
     setSection("SignUp");
+    toggleIsActiveSignIn();
+    toggleIsActiveSignUp();
   };
 
   return (
     <StyledTabBar>
-      <Button onClick={handleSetSignIn}>Sign in</Button>
-      <Button onClick={handleSetSignUp}>Sign up</Button>
+      <Button onClick={handleSetSignIn} $isActiveSignIn={isActiveSignIn}>
+        Sign in
+      </Button>
+      <Button onClick={handleSetSignUp} $isActiveSignUp={isActiveSignUp}>
+        Sign up
+      </Button>
     </StyledTabBar>
   );
 };

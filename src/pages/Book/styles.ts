@@ -6,10 +6,10 @@ import { Media } from "../../ui/media";
 export const BookPageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 40px;
+  padding: 72px 40px 0;
 
   ${Media.Mobile} {
-    padding: 0 24px;
+    padding: 60px 24px 0;
   }
 `;
 
@@ -25,6 +25,7 @@ export const BookInfoBox = styled.div`
   grid-template-columns: 1fr 1fr;
   column-gap: 128px;
   margin-top: 10px;
+  width: 100%;
 
   ${Media.Tablet} {
     grid-template-columns: 1fr;
@@ -35,19 +36,25 @@ export const BookInfoBox = styled.div`
 
 export const BookPhotoBox = styled.div`
   width: 100%;
-  max-width: 544px;
   background-color: ${Color.Blue};
   margin-bottom: 20px;
+  position: relative;
 `;
 
 export const Photo = styled.img`
   width: 100%;
 `;
 
+export const LikeBtn = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
 export const PreviewBook = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 460px;
+  width: 100%;
   border-top: 1px solid ${Color.Gray};
 `;
 

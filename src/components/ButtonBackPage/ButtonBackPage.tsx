@@ -8,7 +8,7 @@ interface IProps {
 
 export const ButtonBackPage = ({ onCLick, type }: IProps) => {
   return (
-    <ArrowButtonBackPage onClick={onCLick} type={type}>
+    <ArrowButtonBackPage onClick={onCLick} type={type} whileHover={{ scale: 1.4 }}>
       <ArrowBackIcon />
     </ArrowButtonBackPage>
   );

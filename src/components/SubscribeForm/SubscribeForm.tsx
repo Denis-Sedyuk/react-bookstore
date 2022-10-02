@@ -10,10 +10,9 @@ export const SubscribeForm = () => {
   const { handleSubmit, reset, control } = useForm<SubscribeValues>();
 
   const onsubmit: SubmitHandler<SubscribeValues> = (data) => {
-    //  Тут нужно записать данные в редакс
+    reset();
   };
 
-  reset();
   return (
     <StyledForm onSubmit={handleSubmit(onsubmit)}>
       <Title>Subscribe to Newsletter</Title>

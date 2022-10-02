@@ -2,23 +2,19 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Color } from "../../ui/colors";
 import { Media } from "../../ui/media";
+import { motion } from "framer-motion";
 
 export const StyledHeader = styled.form`
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   max-height: 104px;
-  margin-bottom: 72px;
   margin-top: 24px;
   padding-bottom: 24px;
   border-bottom: 1px solid ${Color.Gray};
 
   ${Media.Tablet} {
-    padding: 0 40px;
-  }
-
-  ${Media.Mobile} {
-    padding: 0 24px;
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
@@ -28,10 +24,20 @@ export const NavLinkIcon = styled(Link)`
 
 export const NavList = styled.ul`
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: end;
+  gap: 15px;
 `;
 
-export const NavItem = styled.li`
+export const NavItem = styled(motion.li)`
   list-style: none;
+`;
+
+export const AmountBox = styled.div`
+  position: relative;
+`;
+
+export const Amount = styled.p`
+  position: absolute;
+  top: -10px;
+  right: -5px;
 `;

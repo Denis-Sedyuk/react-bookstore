@@ -1,8 +1,5 @@
-import { ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { ButtonBackPage, Input, LabelForm, Title } from "../../components/index";
-import { useAppSelector } from "../../store/hooks";
-import { getUser } from "../../store/selectors/userSelectors";
+import { ButtonBackPage, LabelForm, Title } from "../../components/index";
 import { StyledAccountContainer, UserSubTitle } from "./styles";
 
 export const AccountPage = () => {

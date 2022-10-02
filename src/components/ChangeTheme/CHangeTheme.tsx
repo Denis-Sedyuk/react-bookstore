@@ -9,8 +9,8 @@ export const CHangeTheme = () => {
   };
 
   return (
-    <StyledButton type="button" onClick={toggleTheme}>
-      {theme === "dark" ? "light" : "dark"}
+    <StyledButton type="button" onClick={toggleTheme} whileHover={{ scale: 1.1 }}>
+      {theme === "dark" ? "ight" : "dark"}
     </StyledButton>
   );
 };

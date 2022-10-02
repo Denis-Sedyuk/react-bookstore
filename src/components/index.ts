@@ -15,6 +15,13 @@ import { ButtonBackPage } from "../components/ButtonBackPage/ButtonBackPage";
 import { CheckMode } from "../components/CheckMode/CheckMode";
 import { RequareAuth } from "../components/RequareAuth/RequareAuth";
 import { CHangeTheme } from "./ChangeTheme/CHangeTheme";
+import { Like } from "./Like/Like";
+import { Spinner } from "./Spinner/Spinner";
+import { Error } from "./Error/Error";
+import { BurgerButton } from "./BurgerButton/BurgerButton";
+import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
+import { BookFavorite } from "./BookFavorite/BookFavorite";
+import { Cart } from "./Cart/Cart";
 
 export {
   BookItem,
@@ -34,4 +41,11 @@ export {
   CheckMode,
   RequareAuth,
   CHangeTheme,
+  Like,
+  Spinner,
+  Error,
+  BurgerButton,
+  BurgerMenu,
+  BookFavorite,
+  Cart,
 };

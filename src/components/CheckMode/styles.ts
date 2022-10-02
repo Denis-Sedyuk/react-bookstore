@@ -17,14 +17,6 @@ export const Button = styled.button`
   border: none;
   padding: 0 40px 24px;
 
-  :disabled {
-    color: ${Color.Primary};
-  }
-
-  :active {
-    color: ${Color.Primary};
-  }
-
   :hover {
     color: ${Color.Primary};
   }

@@ -1,5 +1,13 @@
-import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from "../../assets/index";
-import { Title, SubscribeForm, ButtonBackPage, CheckMode } from "../../components/index";
+import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon, DisLikeIcon } from "../../assets/index";
+import {
+  Title,
+  SubscribeForm,
+  ButtonBackPage,
+  CheckMode,
+  Like,
+  Spinner,
+  Error,
+} from "../../components/index";
 import {
   ArrowsBox,
   BookInfoBox,
@@ -21,8 +29,9 @@ import {
   ValueAboutBook,
   BasicAboutBookBox,
   Description,
+  LikeBtn,
 } from "./styles";
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchBookDetails } from "../../store/feautures/bookDetailsSlice";
 import { getBooksDetails } from "../../store/selectors/bookDetailsSelectors";
@@ -30,10 +39,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { Color } from "../../ui/colors";
 import { useToggle } from "../../hooks/useToggle";
+import { addToFavotires } from "../../store/feautures/favoritesSlice";
 
 export const BookPage = () => {
   const [isOpen, toggleIsOpen] = useToggle();
   const [mode, setMode] = useState("description");
+  const [isFavorites, setIsFavorites] = useState<boolean>(true);
   const navigate = useNavigate();
   const { isbn13 = "" } = useParams();
   const dispatch = useAppDispatch();
@@ -44,11 +55,11 @@ export const BookPage = () => {
     dispatch(fetchBookDetails(isbn13));
   }, [dispatch, isbn13]);
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Spinner />;
   }
 
   if (error) {
-    return <h1>Error</h1>;
+    return <Error />;
   }
 
   const handleBackPage = () => {
@@ -58,6 +69,13 @@ export const BookPage = () => {
   const handleDetalise = (): void => {
     toggleIsOpen();
   };
+
+  const handleAddFavorites = (e: MouseEvent<HTMLElement>): void => {
+    e.preventDefault();
+    dispatch(addToFavotires(bookDetails));
+    setIsFavorites(false);
+  };
+
   const {
     title,
     image,
@@ -82,6 +100,15 @@ export const BookPage = () => {
       <BookInfoBox>
         <BookPhotoBox>
           <Photo src={image} />
+          {isFavorites ? (
+            <LikeBtn onClick={handleAddFavorites}>
+              <Like />
+            </LikeBtn>
+          ) : (
+            <LikeBtn>
+              <DisLikeIcon />
+            </LikeBtn>
+          )}
         </BookPhotoBox>
         <PreviewBook>
           <CostStarBox>
@@ -113,8 +140,8 @@ export const BookPage = () => {
             {isOpen && (
               <>
                 <BasicAboutBookBox>
-                  <KeyAboutBook>Link</KeyAboutBook>
-                  <ValueAboutBook>{url}</ValueAboutBook>
+                  <KeyAboutBook>Short</KeyAboutBook>
+                  <ValueAboutBook>{subtitle}</ValueAboutBook>
                 </BasicAboutBookBox>
                 <BasicAboutBookBox>
                   <KeyAboutBook>Article</KeyAboutBook>
@@ -127,15 +154,27 @@ export const BookPage = () => {
               <ChevronDownIcon style={{ position: "absolute", top: 4, right: -2 }} />
             </MoreDetails>
             <ButtonAddToCart type="submit">Add to cart</ButtonAddToCart>
-            <TextPreviewBook href={Object.values(pdf)[0]} target="_blank">
-              Preview book
-            </TextPreviewBook>
+            {pdf && (
+              <TextPreviewBook href={Object.values(pdf)[0]} target="_blank">
+                Preview book
+              </TextPreviewBook>
+            )}
           </InfoAboutBookBox>
         </PreviewBook>
       </BookInfoBox>
       <CheckMode mode={mode} setMode={setMode} />
       <DescriptionBox>
-        <Description>{mode === "description" ? desc : authors}</Description>
+        <Description>
+          {mode === "description" ? (
+            desc
+          ) : authors && mode === "authors" ? (
+            authors
+          ) : (
+            <a href={url} target="_blanc">
+              {title}
+            </a>
+          )}
+        </Description>
       </DescriptionBox>
       <SubscribeForm />
       <SimilarBookBox>

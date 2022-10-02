@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useToggle } from "../../hooks/useToggle";
 import { Button, StyledCheckModeButton } from "./styles";
 
 interface IProps {
@@ -14,10 +14,15 @@ export const CheckMode = ({ setMode }: IProps) => {
   const handleSetAuthors = () => {
     setMode("authors");
   };
+
+  const handleSetBook = () => {
+    setMode("book");
+  };
   return (
     <StyledCheckModeButton>
       <Button onClick={handleSetDescription}>Descriptions</Button>
       <Button onClick={handleSetAuthors}>Authors</Button>
+      <Button onClick={handleSetBook}>Book</Button>
     </StyledCheckModeButton>
   );
 };

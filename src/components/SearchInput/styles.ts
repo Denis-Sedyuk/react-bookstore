@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Color } from "../../ui/colors";
 
-export const StyledInput = styled.input`
+export const StyledInput = styled(motion.input)`
   width: 100%;
   min-height: 56px;
   border: 1px solid ${Color.Gray};

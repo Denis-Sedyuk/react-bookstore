@@ -14,5 +14,13 @@ interface IProps {
 }
 
 export const Input = ({ placeholder, type, name, onChange }: IProps) => {
-  return <StyledInput placeholder={placeholder} type={type} name={name} onChange={onChange} />;
+  return (
+    <StyledInput
+      placeholder={placeholder}
+      type={type}
+      name={name}
+      onChange={onChange}
+      whileHover={{ scale: 1.1 }}
+    />
+  );
 };
