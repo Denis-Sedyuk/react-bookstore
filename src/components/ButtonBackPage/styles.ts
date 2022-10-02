@@ -5,6 +5,7 @@ import { Color } from "../../ui/colors";
 export const ArrowButtonBackPage = styled(motion.button)`
   max-width: 14px;
   background-color: ${Color.White};
+  color: ${Color.Primary};
   border: none;
   cursor: pointer;
 `;

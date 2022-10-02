@@ -5,5 +5,6 @@ import { Color } from "../../ui/colors";
 export const StyledBurgerButton = styled(motion.button)`
   max-width: 24px;
   background-color: ${Color.White};
+  color: ${Color.Primary};
   cursor: pointer;
 `;

@@ -1,4 +1,5 @@
 import { ArrowBackIcon } from "../../assets/index";
+import { Color } from "../../ui/colors";
 import { ArrowButtonBackPage } from "./styles";
 
 interface IProps {
@@ -9,7 +10,7 @@ interface IProps {
 export const ButtonBackPage = ({ onCLick, type }: IProps) => {
   return (
     <ArrowButtonBackPage onClick={onCLick} type={type} whileHover={{ scale: 1.4 }}>
-      <ArrowBackIcon />
+      <ArrowBackIcon stroke={Color.Primary} />
     </ArrowButtonBackPage>
   );
 };

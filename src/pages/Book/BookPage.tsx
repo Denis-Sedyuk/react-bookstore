@@ -40,6 +40,7 @@ import { Rating } from "react-simple-star-rating";
 import { Color } from "../../ui/colors";
 import { useToggle } from "../../hooks/useToggle";
 import { addToFavotires } from "../../store/feautures/favoritesSlice";
+import { MotionConfig, MotionValue } from "framer-motion";
 
 export const BookPage = () => {
   const [isOpen, toggleIsOpen] = useToggle();
@@ -99,8 +100,11 @@ export const BookPage = () => {
       </TitleBox>
       <BookInfoBox>
         <BookPhotoBox>
-          <Photo src={image} />
-          {isFavorites ? (
+          <Photo src={image} alt={title} />
+          <LikeBtn onClick={handleAddFavorites} whileHover={{ scale: 1.1 }}>
+            {isFavorites ? <Like /> : <DisLikeIcon />}
+          </LikeBtn>
+          {/* {isFavorites ? (
             <LikeBtn onClick={handleAddFavorites}>
               <Like />
             </LikeBtn>
@@ -108,17 +112,12 @@ export const BookPage = () => {
             <LikeBtn>
               <DisLikeIcon />
             </LikeBtn>
-          )}
+          )} */}
         </BookPhotoBox>
         <PreviewBook>
           <CostStarBox>
             <Price>{price === "$0.00" ? "Is free" : bookDetails.price}</Price>
-            <Rating
-              readonly={true}
-              ratingValue={+rating * 20}
-              size={25}
-              fillColor={Color.Primary}
-            />
+            <Rating readonly={true} ratingValue={+rating * 20} size={25} fillColor={Color.Red} />
           </CostStarBox>
           <InfoAboutBookBox>
             <BasicAboutBookBox>
@@ -149,13 +148,20 @@ export const BookPage = () => {
                 </BasicAboutBookBox>
               </>
             )}
-            <MoreDetails type="button" onClick={handleDetalise}>
+            <MoreDetails type="button" onClick={handleDetalise} whileHover={{ scale: 1.1 }}>
               More detailse
-              <ChevronDownIcon style={{ position: "absolute", top: 4, right: -2 }} />
+              <ChevronDownIcon
+                style={{ position: "absolute", top: 4, right: -2 }}
+                stroke={Color.Primary}
+              />
             </MoreDetails>
             <ButtonAddToCart type="submit">Add to cart</ButtonAddToCart>
             {pdf && (
-              <TextPreviewBook href={Object.values(pdf)[0]} target="_blank">
+              <TextPreviewBook
+                href={Object.values(pdf)[0]}
+                target="_blank"
+                whileHover={{ scale: 1.1 }}
+              >
                 Preview book
               </TextPreviewBook>
             )}

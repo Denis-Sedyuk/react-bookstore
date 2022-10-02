@@ -17,7 +17,7 @@ interface IProps {
 export const BookItem = ({ book }: IProps) => {
   return (
     <Link to={`/books/${book.isbn13}`}>
-      <StyledItem>
+      <StyledItem whileHover={{ scale: 1.1 }}>
         <BookPhotoBox>
           <Photo src={book.image} />
         </BookPhotoBox>

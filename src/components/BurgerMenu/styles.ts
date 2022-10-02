@@ -8,7 +8,8 @@ export const StyledBurgerMenu = styled(motion.form)`
   flex-direction: column;
   justify-content: space-between;
   padding: 0 40px 50px 40px;
-  background-color: ${Color.Light};
+  background-color: ${Color.White};
+  border: 1px solid ${Color.Primary};
   position: fixed;
   top: 0;
   right: 0;
@@ -27,7 +28,7 @@ export const HeaderMenu = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid ${Color.Gray};
-  min-height: 104px;
+  min-height: 108px;
 `;
 
 export const CloseButton = styled(motion.button)`

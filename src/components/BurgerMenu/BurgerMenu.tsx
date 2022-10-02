@@ -5,6 +5,7 @@ import { CloseButton, HeaderMenu, NavItem, NavList, StyledBurgerMenu, Title } fr
 import { NavBarValues } from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
+import { Color } from "../../ui/colors";
 
 interface Iprops {
   handleCloseMenu: () => void;
@@ -30,7 +31,7 @@ export const BurgerMenu = ({ handleCloseMenu }: Iprops) => {
           <CHangeTheme />
         </NavItem>
         <CloseButton type="button" whileHover={{ scale: 1.2 }} onClick={handleCloseMenu}>
-          <CloseIcon />
+          <CloseIcon stroke={Color.Primary} />
         </CloseButton>
       </HeaderMenu>
       <Controller

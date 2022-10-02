@@ -8,12 +8,11 @@ ${resetCSS}
 ${theme}
 
 body{
-   background-color: var(--White);
-   color: var(--Primary);
+   background: ${Color.White};
+   color: ${Color.Primary};
+}
 
-/* не работает если Enum colors задавать через var() */
-
-   /* background: ${Color.White};
-   color: ${Color.Primary}; */
+a{
+   color: ${Color.Primary};
 }
 `;

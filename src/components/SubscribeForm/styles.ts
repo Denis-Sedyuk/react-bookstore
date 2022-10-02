@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Color } from "../../ui/colors";
 import { Media } from "../../ui/media";
@@ -41,7 +42,7 @@ export const InputForm = styled.div`
   }
 `;
 
-export const SubscribeButton = styled.button`
+export const SubscribeButton = styled(motion.button)`
   border: none;
   border-radius: 0px 2px 2px 0px;
   background-color: ${Color.Primary};
@@ -49,10 +50,6 @@ export const SubscribeButton = styled.button`
   color: ${Color.White};
   min-width: 147px;
   cursor: pointer;
-
-  &:hover {
-    background-color: ${Color.Primary_Light};
-  }
 
   ${Media.Tablet} {
     min-width: 167px;

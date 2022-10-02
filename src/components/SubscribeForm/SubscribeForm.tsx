@@ -35,7 +35,9 @@ export const SubscribeForm = () => {
             );
           }}
         />
-        <SubscribeButton type="submit">Subscribe</SubscribeButton>
+        <SubscribeButton type="submit" whileHover={{ scale: 1.1 }}>
+          Subscribe
+        </SubscribeButton>
       </InputForm>
     </StyledForm>
   );

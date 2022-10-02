@@ -6,5 +6,5 @@ interface IProps {
 }
 
 export const Button = ({ type, children }: IProps) => {
-  return <StyledButton type={type} children={children} />;
+  return <StyledButton type={type} children={children} whileHover={{ scale: 1.1 }} />;
 };

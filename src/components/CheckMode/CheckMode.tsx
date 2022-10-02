@@ -1,4 +1,5 @@
 import { useToggle } from "../../hooks/useToggle";
+import { Color } from "../../ui/colors";
 import { Button, StyledCheckModeButton } from "./styles";
 
 interface IProps {
@@ -20,9 +21,27 @@ export const CheckMode = ({ setMode }: IProps) => {
   };
   return (
     <StyledCheckModeButton>
-      <Button onClick={handleSetDescription}>Descriptions</Button>
-      <Button onClick={handleSetAuthors}>Authors</Button>
-      <Button onClick={handleSetBook}>Book</Button>
+      <Button
+        onClick={handleSetDescription}
+        whileHover={{ scale: 1.1 }}
+        whileFocus={{ scale: 1.1, color: `${Color.Primary}` }}
+      >
+        Descriptions
+      </Button>
+      <Button
+        onClick={handleSetAuthors}
+        whileHover={{ scale: 1.1 }}
+        whileFocus={{ scale: 1.1, color: `${Color.Primary}` }}
+      >
+        Authors
+      </Button>
+      <Button
+        onClick={handleSetBook}
+        whileHover={{ scale: 1.1 }}
+        whileFocus={{ scale: 1.1, color: `${Color.Primary}` }}
+      >
+        Book
+      </Button>
     </StyledCheckModeButton>
   );
 };

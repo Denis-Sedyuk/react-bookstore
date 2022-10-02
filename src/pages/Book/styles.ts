@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Button } from "../../components/index";
 import { Color } from "../../ui/colors";
@@ -45,7 +46,7 @@ export const Photo = styled.img`
   width: 100%;
 `;
 
-export const LikeBtn = styled.button`
+export const LikeBtn = styled(motion.button)`
   position: absolute;
   top: 0;
   right: 0;
@@ -106,7 +107,7 @@ export const ValueAboutBook = styled.span`
   line-height: 32px;
 `;
 
-export const MoreDetails = styled.button`
+export const MoreDetails = styled(motion.button)`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -129,7 +130,7 @@ export const ButtonAddToCart = styled(Button)`
   color: ${Color.White};
 `;
 
-export const TextPreviewBook = styled.a`
+export const TextPreviewBook = styled(motion.a)`
   place-self: center;
   margin-top: 40px;
   font-weight: 400;
@@ -167,6 +168,7 @@ export const SimilarTitle = styled.h3`
   line-height: 60px;
   text-align: start;
   grid-column: span 2;
+  color: ${Color.Primary};
 `;
 
 export const ArrowsBox = styled.div`

@@ -23,6 +23,7 @@ export const Button = styled.button<{ $isActiveSignIn?: boolean; $isActiveSignUp
   border-bottom: ${({ $isActiveSignIn }) => $isActiveSignIn && `1px solid${Color.Primary}`};
   border-bottom: ${({ $isActiveSignUp }) => $isActiveSignUp && `1px solid${Color.Primary}`};
   padding: 26px 0 22px;
+  cursor: pointer;
 
   &:hover {
     color: ${Color.Primary};

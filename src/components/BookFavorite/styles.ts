@@ -13,9 +13,11 @@ export const Card = styled.div`
   max-height: 242px;
   width: 100%;
   column-gap: 32px;
+  border: 1px solid ${Color.Primary};
 
   ${Media.Mobile} {
-    display: grid;
+    flex-direction: column;
+    min-height: 100vh;
   }
 `;
 
