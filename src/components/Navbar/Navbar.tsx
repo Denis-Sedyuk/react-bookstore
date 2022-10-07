@@ -1,30 +1,29 @@
-import { Amount, AmountBox, NavItem, NavLinkIcon, NavList, StyledHeader } from "./styles";
+import { NavItem, NavLinkIcon, NavList, StyledHeader } from "./styles";
 import { Logo, FavoritesIcon, CartIcon, UserIcon, AccountIcon } from "../../assets/index";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../routes";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { CHangeTheme, BurgerButton, Input, BurgerMenu } from "../index";
-import { useWindowSize } from "../../hooks/useWindowSize";
-import { Breakpoint } from "../../ui/breakpoints";
+import { useWindowSize } from "../../hooks/index";
+import { Breakpoint } from "../../ui/index";
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { useAppSelector } from "../../store/hooks";
-import { getCart } from "../../store/selectors/cartSelectors";
+import { FormEvent, useState } from "react";
+import { useAppSelector, getCart } from "../../store/index";
 
 export type NavBarValues = {
   search: string;
 };
 
 export const Navbar = () => {
-  const { amount } = useAppSelector(getCart);
+  const { cartBooks } = useAppSelector(getCart);
   const { handleSubmit, reset, control } = useForm<NavBarValues>();
   const [width] = useWindowSize();
+  const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const onsubmit: SubmitHandler<NavBarValues> = (data) => {
-    console.log(data);
-    //  Тут нужно записать данные в редакс
+  const handleSearch = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    navigate(ROUTE.SEARCH);
     reset();
   };
 
@@ -35,7 +34,7 @@ export const Navbar = () => {
     setIsOpen(false);
   };
   return (
-    <StyledHeader onSubmit={handleSubmit(onsubmit)}>
+    <StyledHeader onSubmit={handleSearch}>
       <NavLinkIcon to={ROUTE.HOME}>
         <Logo />
       </NavLinkIcon>
@@ -63,14 +62,11 @@ export const Navbar = () => {
               <FavoritesIcon />
             </Link>
           </NavItem>
-          <AmountBox>
-            <NavItem whileHover={{ scale: 1.2 }}>
-              <Link to={ROUTE.CART}>
-                <CartIcon />
-                <Amount>{amount}</Amount>
-              </Link>
-            </NavItem>
-          </AmountBox>
+          <NavItem whileHover={{ scale: 1.2 }}>
+            <Link to={ROUTE.CART}>
+              <CartIcon />
+            </Link>
+          </NavItem>
           <NavItem whileHover={{ scale: 1.2 }}>
             <Link to={ROUTE.USER}>
               <UserIcon />

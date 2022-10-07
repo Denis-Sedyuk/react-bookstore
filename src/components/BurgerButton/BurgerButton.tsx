@@ -1,4 +1,3 @@
-import React from "react";
 import { BurgerIcon } from "../../assets/index";
 import { StyledBurgerButton } from "./styles";
 

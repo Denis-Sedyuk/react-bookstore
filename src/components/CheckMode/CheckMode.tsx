@@ -1,5 +1,4 @@
-import { useToggle } from "../../hooks/useToggle";
-import { Color } from "../../ui/colors";
+import { Color } from "../../ui/index";
 import { Button, StyledCheckModeButton } from "./styles";
 
 interface IProps {

@@ -17,7 +17,7 @@ export const Card = styled.div`
 
   ${Media.Mobile} {
     flex-direction: column;
-    min-height: 100vh;
+    max-height: 100%;
   }
 `;
 
@@ -34,6 +34,7 @@ export const BookPhotoBox = styled.div`
 `;
 
 export const Photo = styled.img`
+  object-fit: cover;
   height: 100%;
   width: 100%;
 `;

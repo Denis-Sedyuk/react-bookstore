@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { FirebaseError, FirebaseErrorCode, getFirebaseMessage } from "../../utils/firebaseErrors";
+import { FirebaseError, FirebaseErrorCode, getFirebaseMessage } from "../../utils/index";
 
 interface UserState {
   isAuth: boolean;

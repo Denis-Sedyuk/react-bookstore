@@ -15,6 +15,8 @@ import { ReactComponent as CloseIcon } from "./icons/close.svg";
 import { ReactComponent as HeartIcon } from "./icons/heart.svg";
 import { ReactComponent as LikeIcon } from "./icons/like.svg";
 import { ReactComponent as DisLikeIcon } from "./icons/dislike.svg";
+import { ReactComponent as PlusIcon } from "./icons/plus.svg";
+import { ReactComponent as MinusIcon } from "./icons/minus.svg";
 
 export {
   Logo,
@@ -34,4 +36,6 @@ export {
   HeartIcon,
   LikeIcon,
   DisLikeIcon,
+  PlusIcon,
+  MinusIcon,
 };

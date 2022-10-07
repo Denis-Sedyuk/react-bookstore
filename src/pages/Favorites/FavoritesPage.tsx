@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { BookFavorite, ButtonBackPage, Title } from "../../components/index";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getFavoritesBooks } from "../../store/selectors/favoritesBooksSelectors";
+import { useAppDispatch, useAppSelector, getFavoritesBooks } from "../../store/index";
 import { FavoritePageContainer, FavoritesBookBox } from "./styles";
 
 export const FavoritesPage = () => {

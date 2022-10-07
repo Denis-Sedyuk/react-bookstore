@@ -4,9 +4,7 @@ import { ErrorDesc, ForgotPass, StyledFormSignIn } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../routes";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getUser } from "../../store/selectors/userSelectors";
-import { fetchSignInUser } from "../../store/feautures/userSlice";
+import { useAppDispatch, useAppSelector, getUser, fetchSignInUser } from "../../store/index";
 
 export interface IProps {
   section: string;
@@ -30,7 +28,6 @@ export const SignInForm = ({ section }: IProps) => {
   } = useForm<SignInValues>({
     defaultValues: { email: "", password: "" },
   });
-
   const onsubmit: SubmitHandler<SignInValues> = (userInfo) => {
     setIsLoading(false);
     dispatch(fetchSignInUser(userInfo))

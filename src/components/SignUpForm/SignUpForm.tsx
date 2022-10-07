@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "../../routes";
-import { fetchSignUpUser } from "../../store/feautures/userSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getUser } from "../../store/selectors/userSelectors";
-import { FirebaseError } from "../../utils/firebaseErrors";
+import { fetchSignUpUser, useAppDispatch, useAppSelector, getUser } from "../../store/index";
+import { FirebaseError } from "../../utils/index";
 import { Button, LabelForm, Input } from "../index";
 import { ErrorDesc, StyledForm } from "./styles";
 

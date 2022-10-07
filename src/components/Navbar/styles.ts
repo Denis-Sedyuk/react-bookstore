@@ -31,13 +31,3 @@ export const NavList = styled.ul`
 export const NavItem = styled(motion.li)`
   list-style: none;
 `;
-
-export const AmountBox = styled.div`
-  position: relative;
-`;
-
-export const Amount = styled.p`
-  position: absolute;
-  top: -10px;
-  right: -5px;
-`;

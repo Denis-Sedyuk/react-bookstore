@@ -54,3 +54,9 @@ export interface IBookCart {
 export interface IPdf {
   [key: string]: string;
 }
+
+export interface IResponseSearchBook {
+  total: string;
+  page: string;
+  books: IBook[];
+}

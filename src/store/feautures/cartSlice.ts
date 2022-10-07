@@ -27,7 +27,22 @@ const cartSlice = createSlice({
       const result = state.cartBooks.find((book) => book.isbn13 === payload.isbn13);
       if (!result) state.cartBooks.push(payload);
     },
+
+    amountPlus(state, { payload }: PayloadAction<IBookCart>) {
+      const result = state.cartBooks.find((book) => book.isbn13 === payload.isbn13);
+      if (result) {
+        result.amount = result.amount + 1;
+      }
+    },
+
+    amountMinus(state, { payload }: PayloadAction<IBookCart>) {
+      const result = state.cartBooks.find((book) => book.isbn13 === payload.isbn13);
+      if (result) {
+        result.amount = result.amount - 1;
+      }
+    },
   },
 });
 
 export default cartSlice.reducer;
+export const { removeCart, addToCart, amountPlus, amountMinus } = cartSlice.actions;

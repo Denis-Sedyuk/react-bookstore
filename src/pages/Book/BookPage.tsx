@@ -32,15 +32,18 @@ import {
   LikeBtn,
 } from "./styles";
 import { MouseEvent, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { fetchBookDetails } from "../../store/feautures/bookDetailsSlice";
-import { getBooksDetails } from "../../store/selectors/bookDetailsSelectors";
+import {
+  useAppDispatch,
+  useAppSelector,
+  fetchBookDetails,
+  getBooksDetails,
+  addToFavotires,
+  addToCart,
+} from "../../store/index";
 import { useNavigate, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
-import { Color } from "../../ui/colors";
-import { useToggle } from "../../hooks/useToggle";
-import { addToFavotires } from "../../store/feautures/favoritesSlice";
-import { MotionConfig, MotionValue } from "framer-motion";
+import { Color } from "../../ui/index";
+import { useToggle } from "../../hooks/index";
 
 export const BookPage = () => {
   const [isOpen, toggleIsOpen] = useToggle();
@@ -75,6 +78,16 @@ export const BookPage = () => {
     e.preventDefault();
     dispatch(addToFavotires(bookDetails));
     setIsFavorites(false);
+  };
+
+  const handleAddToCart = (e: MouseEvent<HTMLElement>): void => {
+    e.preventDefault();
+    dispatch(
+      addToCart({
+        ...bookDetails,
+        amount: 0,
+      }),
+    );
   };
 
   const {
@@ -155,7 +168,9 @@ export const BookPage = () => {
                 stroke={Color.Primary}
               />
             </MoreDetails>
-            <ButtonAddToCart type="submit">Add to cart</ButtonAddToCart>
+            <ButtonAddToCart type="button" onClick={handleAddToCart}>
+              Add to cart
+            </ButtonAddToCart>
             {pdf && (
               <TextPreviewBook
                 href={Object.values(pdf)[0]}

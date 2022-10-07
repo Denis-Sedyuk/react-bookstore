@@ -5,7 +5,7 @@ import { CloseButton, HeaderMenu, NavItem, NavList, StyledBurgerMenu, Title } fr
 import { NavBarValues } from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
-import { Color } from "../../ui/colors";
+import { Color } from "../../ui/index";
 
 interface Iprops {
   handleCloseMenu: () => void;

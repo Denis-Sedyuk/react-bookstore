@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-import { fetchBooks } from "../../store/feautures/bookSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getBooks } from "../../store/selectors/bookSelectors";
+import { fetchBooks, useAppDispatch, useAppSelector, getBooks } from "../../store/index";
 import { BookItem, Spinner, Error } from "../index";
 import { StyledBookList } from "./styles";
 

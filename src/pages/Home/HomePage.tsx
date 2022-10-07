@@ -1,6 +1,5 @@
 import { BookList, SubscribeForm, Title } from "../../components/index";
-import { useAppSelector } from "../../store/hooks";
-import { getUser } from "../../store/selectors/userSelectors";
+import { useAppSelector, getUser } from "../../store/index";
 import { HomePageContainer } from "./styles";
 
 export const HomePage = () => {

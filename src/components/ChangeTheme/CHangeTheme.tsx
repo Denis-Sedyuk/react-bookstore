@@ -1,4 +1,4 @@
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../hooks/index";
 import { StyledButton } from "./styles";
 
 export const CHangeTheme = () => {

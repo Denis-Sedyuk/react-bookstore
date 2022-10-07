@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import { bookAPI } from "../../services/bookstoreAPI";
+import { bookAPI } from "../../services/index";
 import { IBook, IBookItem } from "../../types/types";
 
 interface BookState {

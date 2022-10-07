@@ -1,6 +1,6 @@
 import { StyledSpinner } from "./styles";
 import { ThreeDots } from "react-loader-spinner";
-import { Color } from "../../ui/colors";
+import { Color } from "../../ui/index";
 
 export const Spinner = () => {
   return (

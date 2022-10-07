@@ -24,8 +24,8 @@ class BookAPI {
     return data;
   }
 
-  public async getSearchBook() {
-    const { data } = await this.API.get(`${Endpoint.SEARCH}`);
+  public async getSearchBook(query: string, page: number) {
+    const { data } = await this.API.get(`${Endpoint.SEARCH}${query}/${page}`);
     return data;
   }
 }
