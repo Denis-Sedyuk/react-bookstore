@@ -9,6 +9,7 @@ export const FormStyled = styled.form`
   border: 1px solid ${Color.Gray};
   padding: 26px 32px 40px;
   margin: 0 auto;
+  margin-top: 70px;
 `;
 
 export const Title = styled.h3`

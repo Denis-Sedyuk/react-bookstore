@@ -1,9 +1,9 @@
 import { StyledButton } from "./styles";
-import { MouseEvent } from "react";
+import { MouseEvent, ReactNode } from "react";
 
 interface IProps {
   type: "button" | "submit" | "reset";
-  children: string;
+  children: ReactNode;
   onClick?: (() => void) | ((event: MouseEvent<HTMLElement>) => void);
 }
 

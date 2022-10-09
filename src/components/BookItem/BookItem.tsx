@@ -16,8 +16,8 @@ interface IProps {
 
 export const BookItem = ({ book }: IProps) => {
   return (
-    <Link to={`/books/${book.isbn13}`}>
-      <StyledItem whileHover={{ scale: 1.1 }}>
+    <StyledItem whileHover={{ scale: 1.1 }}>
+      <Link to={`/books/${book.isbn13}`}>
         <BookPhotoBox>
           <Photo src={book.image} />
         </BookPhotoBox>
@@ -28,7 +28,7 @@ export const BookItem = ({ book }: IProps) => {
           </BookSubTitle>
           <Price>{book.price === "$0.00" ? "This book is free" : book.price}</Price>
         </BookInfo>
-      </StyledItem>
-    </Link>
+      </Link>
+    </StyledItem>
   );
 };

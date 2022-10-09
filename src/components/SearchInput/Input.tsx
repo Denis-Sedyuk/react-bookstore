@@ -10,7 +10,7 @@ interface IProps {
   type: HTMLInputTypeAttribute;
   name: keyof SignInValues | keyof SignUpValues | keyof NavBarValues | keyof SubscribeValues;
   value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = ({ placeholder, type, name, onChange }: IProps) => {

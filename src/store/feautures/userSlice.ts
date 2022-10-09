@@ -6,11 +6,13 @@ interface UserState {
   isAuth: boolean;
   email: string;
   error: null | FirebaseError;
+  isPendingAuth: boolean;
   creationTime: string;
 }
 
 const initialState: UserState = {
   isAuth: false,
+  isPendingAuth: false,
   email: "",
   error: null,
   creationTime: "",
@@ -26,7 +28,6 @@ export const fetchSignUpUser = createAsyncThunk<
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const userEmail = userCredential.user.email as string;
     const creationTime = userCredential.user.metadata.creationTime as string;
-
     return { userEmail, creationTime };
   } catch (error) {
     const firebaseError = error as { code: FirebaseErrorCode };
@@ -36,7 +37,7 @@ export const fetchSignUpUser = createAsyncThunk<
 });
 
 export const fetchSignInUser = createAsyncThunk<
-  { userEmail: string },
+  { userEmail: string; creationTime: string },
   { email: string; password: string },
   { rejectValue: FirebaseError }
 >("user/fetchSignInUser", async ({ email, password }, { rejectWithValue }) => {
@@ -44,8 +45,9 @@ export const fetchSignInUser = createAsyncThunk<
     const auth = getAuth();
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const userEmail = userCredential.user.email as string;
+    const creationTime = userCredential.user.metadata.creationTime as string;
 
-    return { userEmail };
+    return { userEmail, creationTime };
   } catch (error) {
     const firebaseError = error as { code: FirebaseErrorCode };
 
@@ -61,33 +63,40 @@ const userSlice = createSlice({
     builder.addCase(fetchSignUpUser.pending, (state) => {
       state.isAuth = false;
       state.error = null;
+      state.isPendingAuth = true;
     });
     builder.addCase(fetchSignUpUser.fulfilled, (state, { payload }) => {
       state.error = null;
       state.email = payload.userEmail;
       state.creationTime = payload.creationTime;
       state.isAuth = true;
+      state.isPendingAuth = false;
     });
     builder.addCase(fetchSignUpUser.rejected, (state, { payload }) => {
       if (payload) {
         state.error = payload;
         state.isAuth = false;
+        state.isPendingAuth = false;
       }
     });
 
     builder.addCase(fetchSignInUser.pending, (state) => {
       state.isAuth = false;
       state.error = null;
+      state.isPendingAuth = true;
     });
     builder.addCase(fetchSignInUser.fulfilled, (state, { payload }) => {
       state.error = null;
       state.email = payload.userEmail;
+      state.creationTime = payload.creationTime;
+      state.isPendingAuth = false;
       state.isAuth = true;
     });
     builder.addCase(fetchSignInUser.rejected, (state, { payload }) => {
       if (payload) {
         state.error = payload;
         state.isAuth = false;
+        state.isPendingAuth = false;
       }
     });
   },

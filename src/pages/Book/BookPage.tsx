@@ -7,6 +7,7 @@ import {
   Like,
   Spinner,
   Error,
+  SliderSlick,
 } from "../../components/index";
 import {
   ArrowsBox,
@@ -105,6 +106,7 @@ export const BookPage = () => {
     pdf,
     isbn10,
   } = bookDetails;
+
   return (
     <BookPageContainer>
       <TitleBox>
@@ -205,6 +207,7 @@ export const BookPage = () => {
           <ArrowRightIcon />
         </ArrowsBox>
       </SimilarBookBox>
+      <SliderSlick />
     </BookPageContainer>
   );
 };

@@ -29,14 +29,15 @@ export const SignInForm = ({ section }: IProps) => {
     defaultValues: { email: "", password: "" },
   });
   const onsubmit: SubmitHandler<SignInValues> = (userInfo) => {
-    setIsLoading(false);
+    setIsLoading(true);
     dispatch(fetchSignInUser(userInfo))
       .then(() => {
         // navigate(ROUTE.HOME);
       })
       .finally(() => {
-        reset();
+        setIsLoading(false);
       });
+    reset();
   };
 
   return (
@@ -79,7 +80,8 @@ export const SignInForm = ({ section }: IProps) => {
         <Link to={`/${ROUTE.RESET_PASSWORD}`}>Forgot password ?</Link>
       </ForgotPass>
       {error && <ErrorDesc>{error}</ErrorDesc>}
-      <Button type="submit">{isLoading ? "Loading..." : "Sign in"}</Button>
+      {isLoading ? <Spinner /> : <Button type="submit">Sign in</Button>}
     </StyledFormSignIn>
   );
 };
+// {isLoading ? "Loading..." : "Sign in"}

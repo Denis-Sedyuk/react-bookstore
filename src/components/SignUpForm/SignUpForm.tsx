@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useToggle } from "../../hooks";
 import { ROUTE } from "../../routes";
 import { fetchSignUpUser, useAppDispatch, useAppSelector, getUser } from "../../store/index";
 import { FirebaseError } from "../../utils/index";
-import { Button, LabelForm, Input } from "../index";
+import { Button, LabelForm, Input, Spinner } from "../index";
 import { ErrorDesc, StyledForm } from "./styles";
 
 export interface IProps {
   section: string;
+  toggleModal: (value: boolean) => void;
 }
 
 export type SignUpValues = {
@@ -18,24 +20,24 @@ export type SignUpValues = {
   confirmPassword: string;
 };
 
-export const SignUpForm = ({ section }: IProps) => {
-  const { error } = useAppSelector(getUser);
+export const SignUpForm = ({ section, toggleModal }: IProps) => {
+  const { error, isPendingAuth } = useAppSelector(getUser);
   const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const {
     handleSubmit,
-    reset,
     control,
+    reset,
+    watch,
     formState: { errors },
   } = useForm<SignUpValues>({
     defaultValues: { userName: "", email: "", password: "", confirmPassword: "" },
   });
 
   const onsubmit: SubmitHandler<SignUpValues> = (userInfo) => {
-    setIsLoading(true);
     dispatch(fetchSignUpUser(userInfo))
       .then(() => {
+        toggleModal(true);
         // navigate(ROUTE.HOME);
       })
       .finally(() => {
@@ -84,6 +86,12 @@ export const SignUpForm = ({ section }: IProps) => {
       <Controller
         control={control}
         name="password"
+        rules={{
+          minLength: {
+            value: 6,
+            message: "Password must be at least 6 characters long",
+          },
+        }}
         render={({ field: { onChange, value } }) => {
           return (
             <Input
@@ -100,6 +108,14 @@ export const SignUpForm = ({ section }: IProps) => {
       <Controller
         control={control}
         name="confirmPassword"
+        rules={{
+          required: "Confirm  your password",
+          validate: (value: string) => {
+            if (watch("password") !== value) {
+              return "Password does not match";
+            }
+          },
+        }}
         render={({ field: { onChange, value } }) => {
           return (
             <Input
@@ -113,7 +129,8 @@ export const SignUpForm = ({ section }: IProps) => {
         }}
       />
       {error && <ErrorDesc>{error}</ErrorDesc>}
-      <Button type="submit">{isLoading ? "Loading..." : "Sign up"}</Button>
+      {}
+      {isPendingAuth ? <Spinner /> : <Button type="submit">Sign up</Button>}
     </StyledForm>
   );
 };

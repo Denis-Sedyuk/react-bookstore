@@ -22,6 +22,9 @@ import { BurgerButton } from "./BurgerButton/BurgerButton";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 import { BookFavorite } from "./BookFavorite/BookFavorite";
 import { Cart } from "./Cart/Cart";
+import { SliderSlick } from "./Slider/Slider";
+import { Portal } from "./Portal/Portal";
+import { Modal } from "./Modal/Modal";
 
 export {
   BookItem,
@@ -48,4 +51,7 @@ export {
   BurgerMenu,
   BookFavorite,
   Cart,
+  SliderSlick,
+  Portal,
+  Modal,
 };

@@ -17,6 +17,7 @@ import {
   Price,
   PriceWrapper,
 } from "./styles";
+import { Color } from "../../ui";
 
 interface IProps {
   book: IBookCart;
@@ -58,18 +59,18 @@ export const Cart = ({ book }: IProps) => {
           </Authors>
           <Amount>
             <AmountButton type="button" onClick={handleAmountMinus}>
-              <MinusIcon />
+              <MinusIcon stroke={Color.Primary} />
             </AmountButton>
             <AmountTotal>{book.amount + 1}</AmountTotal>
             <AmountButton type="button" onClick={handleAmountPlus}>
-              <PlusIcon />
+              <PlusIcon stroke={Color.Primary} />
             </AmountButton>
           </Amount>
         </BookInfo>
         <PriceWrapper>
           <Price>${resultPrice}</Price>
           <Close typeof="button" onClick={handleDeleteBook}>
-            <CloseIcon />
+            <CloseIcon stroke={Color.Primary} />
           </Close>
         </PriceWrapper>
       </Card>

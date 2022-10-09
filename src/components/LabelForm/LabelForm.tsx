@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import { Label } from "./styles";
 
 interface IProps {
-  children: string;
+  children: ReactNode;
 }
 
 export const LabelForm = ({ children }: IProps) => {

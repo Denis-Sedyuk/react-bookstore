@@ -53,9 +53,6 @@ export const BookInfo = styled.div`
   width: 100%;
   max-width: 550px;
   padding-top: 24px;
-
-  ${Media.Mobile} {
-  }
 `;
 
 export const BookTitle = styled.h2`
@@ -63,9 +60,6 @@ export const BookTitle = styled.h2`
   font-size: 24px;
   line-height: 32px;
   padding-bottom: 10px;
-
-  ${Media.Mobile} {
-  }
 `;
 
 export const Authors = styled.p`
@@ -75,8 +69,6 @@ export const Authors = styled.p`
   padding-bottom: 5px;
   color: ${Color.Secondary};
   align-items: center;
-  ${Media.Mobile} {
-  }
 `;
 
 export const Amount = styled.div`
@@ -108,8 +100,7 @@ export const PriceWrapper = styled.div`
   align-items: center;
 
   ${Media.Tablet} {
-    flex-direction: column-reverse;
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
 `;
 
@@ -127,13 +118,17 @@ export const Close = styled.button`
   ${Media.Tablet} {
     align-self: end;
   }
-
-  ${Media.Mobile} {
-  }
 `;
 
 export const Price = styled.p`
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
+  margin-right: 10px;
+
+  ${Media.Mobile} {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+  }
 `;
