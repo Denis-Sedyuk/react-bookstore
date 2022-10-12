@@ -1,4 +1,5 @@
 {
+  "homepage": "https://denis-sedyuk.github.io/react-bookstore/",
   "name": "react-bookstore",
   "version": "0.1.0",
   "private": true,
@@ -34,6 +35,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -55,6 +57,7 @@
   "devDependencies": {
     "@types/react-slick": "^0.23.10",
     "@types/styled-components": "^5.1.26",
+    "gh-pages": "^4.0.0",
     "react-rating-stars-component": "^2.2.0",
     "styled-components": "^5.3.5"
   }
