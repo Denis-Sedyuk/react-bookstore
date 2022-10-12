@@ -13,13 +13,11 @@ export const BookList = () => {
 
   return (
     <StyledBookList>
-      {/* <Container> */}
       {isLoading && <Spinner />}
       {error && <Error />}
       {books.map((book) => {
         return <BookItem book={book} key={book.isbn13} />;
       })}
-      {/* </Container> */}
     </StyledBookList>
   );
 };
