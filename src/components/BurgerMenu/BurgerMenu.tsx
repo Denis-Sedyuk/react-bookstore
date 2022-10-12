@@ -1,27 +1,32 @@
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Button, CHangeTheme, Input } from "../index";
-import { CloseIcon } from "../../assets/index";
+import { useForm } from "react-hook-form";
+import { Button, CHangeTheme, SearchInput } from "components";
+import { CloseIcon } from "assets";
 import { CloseButton, HeaderMenu, NavItem, NavList, StyledBurgerMenu, Title } from "./styles";
-import { NavBarValues } from "../Navbar/Navbar";
-import { Link } from "react-router-dom";
-import { ROUTE } from "../../routes";
-import { Color } from "../../ui/index";
+import { NavBarValues } from "components/Navbar/Navbar";
+import { Link, useNavigate } from "react-router-dom";
+import { ROUTE } from "routes";
+import { Color } from "ui";
+import { FormEvent } from "react";
+import { getUser, useAppSelector } from "store";
 
 interface Iprops {
   handleCloseMenu: () => void;
 }
 
 export const BurgerMenu = ({ handleCloseMenu }: Iprops) => {
-  const { handleSubmit, reset, control } = useForm<NavBarValues>();
+  const { isAuth } = useAppSelector(getUser);
+  const navigate = useNavigate();
+  const { reset } = useForm<NavBarValues>();
 
-  const onsubmit: SubmitHandler<NavBarValues> = (data) => {
-    console.log(data);
+  const handleSearchPage = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    navigate(ROUTE.SEARCH);
     reset();
   };
 
   return (
     <StyledBurgerMenu
-      onSubmit={handleSubmit(onsubmit)}
+      onSubmit={handleSearchPage}
       animate={{ x: 0 }}
       initial={{ x: 600 }}
       exit={{ x: 600 }}
@@ -34,21 +39,7 @@ export const BurgerMenu = ({ handleCloseMenu }: Iprops) => {
           <CloseIcon stroke={Color.Primary} />
         </CloseButton>
       </HeaderMenu>
-      <Controller
-        name="search"
-        control={control}
-        render={({ field: { onChange, value } }) => {
-          return (
-            <Input
-              name={"search"}
-              placeholder="Search"
-              value={value}
-              onChange={onChange}
-              type="text"
-            />
-          );
-        }}
-      />
+      <SearchInput />
       <NavList>
         <NavItem whileHover={{ scale: 1.2 }}>
           <Link to={ROUTE.FAVORITES}>
@@ -60,14 +51,16 @@ export const BurgerMenu = ({ handleCloseMenu }: Iprops) => {
             <Title>Cart</Title>
           </Link>
         </NavItem>
-        <NavItem whileHover={{ scale: 1.2 }}>
-          <Link to={ROUTE.ACCOUNT}>
-            <Title>Profile</Title>
-          </Link>
-        </NavItem>
       </NavList>
-
-      <Button type="submit">Sign in</Button>
+      {isAuth ? (
+        <Link to={ROUTE.ACCOUNT}>
+          <Button type="button">Account</Button>
+        </Link>
+      ) : (
+        <Link to={ROUTE.USER}>
+          <Button type="submit">Sign in</Button>
+        </Link>
+      )}
     </StyledBurgerMenu>
   );
 };

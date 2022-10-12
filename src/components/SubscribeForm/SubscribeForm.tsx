@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { Input } from "../index";
+import { Input } from "components";
 import { InputForm, StyledForm, SubscribeButton, Subtitle, Title } from "./styles";
 
 export type SubscribeValues = {
@@ -35,9 +35,7 @@ export const SubscribeForm = () => {
             );
           }}
         />
-        <SubscribeButton type="submit" whileHover={{ scale: 1.1 }}>
-          Subscribe
-        </SubscribeButton>
+        <SubscribeButton type="submit">Subscribe</SubscribeButton>
       </InputForm>
     </StyledForm>
   );

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Color } from "../../ui/colors";
-import { Media } from "../../ui/media";
+import { Media, Color } from "ui";
 import { motion } from "framer-motion";
 
 export const StyledHeader = styled.form`

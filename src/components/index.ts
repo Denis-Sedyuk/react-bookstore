@@ -1,5 +1,6 @@
 import { BookItem } from "./BookItem/BookItem";
-import { Input } from "../components/SearchInput/Input";
+import { Input } from "./Input/Input";
+import { SearchInput } from "./SearchInput/SearchInput";
 import { Button } from "../components/Button/Button";
 import { LabelForm } from "../components/LabelForm/LabelForm";
 import { BookList } from "../components/BookList/BookList";
@@ -29,6 +30,7 @@ import { Modal } from "./Modal/Modal";
 export {
   BookItem,
   Input,
+  SearchInput,
   Button,
   LabelForm,
   BookList,

@@ -1,4 +1,4 @@
-import { Color } from "../../ui/index";
+import { Color } from "ui";
 import { Button, StyledCheckModeButton } from "./styles";
 
 interface IProps {

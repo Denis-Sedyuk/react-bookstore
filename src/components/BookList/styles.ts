@@ -6,6 +6,7 @@ export const StyledBookList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   row-gap: 48px;
   column-gap: 32px;
+  min-height: 100vh;
 
   ${Media.Tablet} {
     grid-template-columns: 1fr 1fr;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Modal, SignInForm, SignUpForm, TabBar } from "../../components/index";
-import { useToggle } from "../../hooks";
+import { Modal, SignInForm, SignUpForm, TabBar } from "components";
+import { useToggle } from "hooks";
 import { SignInContainer } from "./styles";
 
 export const SignInPage = () => {

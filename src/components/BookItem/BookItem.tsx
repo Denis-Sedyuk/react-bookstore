@@ -8,7 +8,7 @@ import {
   StyledItem,
 } from "./styles";
 import { Link } from "react-router-dom";
-import { IBook } from "../../types/types";
+import { IBook } from "types";
 
 interface IProps {
   book: IBook;
@@ -16,8 +16,8 @@ interface IProps {
 
 export const BookItem = ({ book }: IProps) => {
   return (
-    <StyledItem whileHover={{ scale: 1.1 }}>
-      <Link to={`/books/${book.isbn13}`}>
+    <Link to={`/books/${book.isbn13}`}>
+      <StyledItem whileHover={{ scale: 1.1 }}>
         <BookPhotoBox>
           <Photo src={book.image} />
         </BookPhotoBox>
@@ -28,7 +28,7 @@ export const BookItem = ({ book }: IProps) => {
           </BookSubTitle>
           <Price>{book.price === "$0.00" ? "This book is free" : book.price}</Price>
         </BookInfo>
-      </Link>
-    </StyledItem>
+      </StyledItem>
+    </Link>
   );
 };

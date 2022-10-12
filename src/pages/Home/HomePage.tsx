@@ -1,4 +1,4 @@
-import { BookList, SubscribeForm, Title } from "../../components/index";
+import { BookList, SubscribeForm, Title } from "components";
 import { HomePageContainer } from "./styles";
 
 export const HomePage = () => {

@@ -1,8 +1,7 @@
 import { StyledSlider } from "./styles";
-import { fetchBooks, getBooks, useAppDispatch, useAppSelector } from "../../store";
-import { BookItem, BookList } from "../index";
+import { fetchBooks, getBooks, useAppDispatch, useAppSelector } from "store";
+import { BookItem } from "components";
 import { useEffect } from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -14,15 +13,12 @@ export const SliderSlick = () => {
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
-
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
+    speed: 500,
     slidesToShow: 3,
     slidesToScroll: 2,
-    autoplay: false,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,

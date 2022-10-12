@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon, DisLikeIcon } from "../../assets/index";
+import { ChevronDownIcon, DisLikeIcon } from "assets";
 import {
   Title,
   SubscribeForm,
@@ -8,9 +8,8 @@ import {
   Spinner,
   Error,
   SliderSlick,
-} from "../../components/index";
+} from "components";
 import {
-  ArrowsBox,
   BookInfoBox,
   BookPageContainer,
   InfoAboutBookBox,
@@ -31,6 +30,7 @@ import {
   BasicAboutBookBox,
   Description,
   LikeBtn,
+  SliderContainer,
 } from "./styles";
 import { MouseEvent, useEffect, useState } from "react";
 import {
@@ -40,11 +40,11 @@ import {
   getBooksDetails,
   addToFavotires,
   addToCart,
-} from "../../store/index";
+} from "store";
 import { useNavigate, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
-import { Color } from "../../ui/index";
-import { useToggle } from "../../hooks/index";
+import { Color } from "ui";
+import { useToggle } from "hooks";
 
 export const BookPage = () => {
   const [isOpen, toggleIsOpen] = useToggle();
@@ -119,15 +119,6 @@ export const BookPage = () => {
           <LikeBtn onClick={handleAddFavorites} whileHover={{ scale: 1.1 }}>
             {isFavorites ? <Like /> : <DisLikeIcon />}
           </LikeBtn>
-          {/* {isFavorites ? (
-            <LikeBtn onClick={handleAddFavorites}>
-              <Like />
-            </LikeBtn>
-          ) : (
-            <LikeBtn>
-              <DisLikeIcon />
-            </LikeBtn>
-          )} */}
         </BookPhotoBox>
         <PreviewBook>
           <CostStarBox>
@@ -202,12 +193,10 @@ export const BookPage = () => {
       <SubscribeForm />
       <SimilarBookBox>
         <SimilarTitle>Similar Books</SimilarTitle>
-        <ArrowsBox>
-          <ArrowLeftIcon />
-          <ArrowRightIcon />
-        </ArrowsBox>
       </SimilarBookBox>
-      <SliderSlick />
+      <SliderContainer>
+        <SliderSlick />
+      </SliderContainer>
     </BookPageContainer>
   );
 };

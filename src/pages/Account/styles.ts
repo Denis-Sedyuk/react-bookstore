@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Media } from "../../ui";
-import { Color } from "../../ui/colors";
+import { Color } from "ui";
 
 export const StyledAccountContainer = styled.div`
   display: flex;

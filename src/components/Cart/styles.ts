@@ -1,8 +1,5 @@
-import { motion } from "framer-motion";
 import styled from "styled-components";
-import { MinusIcon } from "../../assets";
-import { Color } from "../../ui/colors";
-import { Media } from "../../ui/media";
+import { Media, Color } from "ui";
 
 export const CartContainer = styled.div`
   display: flex;

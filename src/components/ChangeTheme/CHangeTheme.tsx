@@ -1,4 +1,4 @@
-import { useTheme } from "../../hooks/index";
+import { useTheme } from "hooks";
 import { StyledButton } from "./styles";
 
 export const CHangeTheme = () => {
@@ -10,7 +10,7 @@ export const CHangeTheme = () => {
 
   return (
     <StyledButton type="button" onClick={toggleTheme} whileHover={{ scale: 1.1 }}>
-      {theme === "dark" ? "ight" : "dark"}
+      {theme === "dark" ? "light" : "dark"}
     </StyledButton>
   );
 };

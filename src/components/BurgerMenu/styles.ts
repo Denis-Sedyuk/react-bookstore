@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
-import { Media } from "../../ui/media";
+import { Media, Color } from "ui";
 
 export const StyledBurgerMenu = styled(motion.form)`
   display: flex;
@@ -18,7 +17,7 @@ export const StyledBurgerMenu = styled(motion.form)`
   z-index: 50;
 
   ${Media.Mobile} {
-    padding: 0 24px;
+    padding: 0 24px 24px;
     width: 100%;
   }
 `;

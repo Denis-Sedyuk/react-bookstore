@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
-import { Media } from "../../ui/media";
+import { Media, Color } from "ui";
 
 export const StyledFooter = styled.div`
   display: flex;

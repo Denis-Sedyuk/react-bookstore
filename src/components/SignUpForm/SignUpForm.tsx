@@ -1,11 +1,6 @@
-import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useToggle } from "../../hooks";
-import { ROUTE } from "../../routes";
-import { fetchSignUpUser, useAppDispatch, useAppSelector, getUser } from "../../store/index";
-import { FirebaseError } from "../../utils/index";
-import { Button, LabelForm, Input, Spinner } from "../index";
+import { fetchSignUpUser, useAppDispatch, useAppSelector, getUser } from "store";
+import { Button, LabelForm, Input, Spinner } from "components";
 import { ErrorDesc, StyledForm } from "./styles";
 
 export interface IProps {
@@ -23,7 +18,6 @@ export type SignUpValues = {
 export const SignUpForm = ({ section, toggleModal }: IProps) => {
   const { error, isPendingAuth } = useAppSelector(getUser);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -38,7 +32,6 @@ export const SignUpForm = ({ section, toggleModal }: IProps) => {
     dispatch(fetchSignUpUser(userInfo))
       .then(() => {
         toggleModal(true);
-        // navigate(ROUTE.HOME);
       })
       .finally(() => {
         reset();

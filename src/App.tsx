@@ -1,4 +1,4 @@
-import { MainTemplate, RequareAuth } from "./components/index";
+import { MainTemplate, RequareAuth } from "components";
 import { Routes, Route } from "react-router-dom";
 import {
   AccountPage,
@@ -10,8 +10,8 @@ import {
   ResetPage,
   SearchPage,
   SignInPage,
-} from "./pages/index";
-import { ROUTE } from "./routes/index";
+} from "pages";
+import { ROUTE } from "routes";
 
 export const App = () => {
   return (
@@ -19,6 +19,8 @@ export const App = () => {
       <Route path={ROUTE.HOME} element={<MainTemplate />}>
         <Route index element={<HomePage />} />
         <Route path={ROUTE.SEARCH} element={<SearchPage />} />
+        {/* <Route path={`${ROUTE.SEARCH}:page`} element={<SearchPage />} /> */}
+
         <Route path={`${ROUTE.BOOK}:isbn13`} element={<BookPage />} />
         <Route path={ROUTE.USER} element={<SignInPage />} />
         <Route path={ROUTE.RESET_PASSWORD} element={<ResetPage />} />

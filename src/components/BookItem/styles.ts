@@ -10,7 +10,6 @@ export const StyledItem = styled(motion.li)`
   max-width: 352px;
   width: 100%;
   min-height: 100%;
-  justify-content: space-between;
 `;
 
 export const BookPhotoBox = styled.div`
@@ -28,13 +27,14 @@ export const BookInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-grow: 4;
 `;
 
 export const BookTitle = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  /* text-align: start; */
+  flex-grow: 8;
 `;
 
 export const BookSubTitle = styled.p`
@@ -42,7 +42,7 @@ export const BookSubTitle = styled.p`
   font-size: 16px;
   line-height: 24px;
   color: ${Color.Secondary};
-  /* align-self: flex-start; */
+  flex-grow: 1;
 `;
 
 export const Price = styled.span`
@@ -50,5 +50,5 @@ export const Price = styled.span`
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  /* text-align: start; */
+  flex-grow: 0;
 `;

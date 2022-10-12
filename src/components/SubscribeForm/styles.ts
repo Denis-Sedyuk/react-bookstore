@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
-import { Media } from "../../ui/media";
+import { Media, Color } from "ui";
 
 export const StyledForm = styled.form`
   display: flex;
@@ -50,6 +49,12 @@ export const SubscribeButton = styled(motion.button)`
   color: ${Color.White};
   min-width: 147px;
   cursor: pointer;
+  &:hover {
+    background-color: ${Color.Secondary};
+  }
+  &:active {
+    transform: scale(1.1);
+  }
 
   ${Media.Tablet} {
     min-width: 167px;

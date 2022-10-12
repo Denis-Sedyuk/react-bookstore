@@ -1,4 +1,4 @@
-import { LikeIcon } from "../../assets/index";
+import { LikeIcon } from "assets";
 import { LikeButton } from "./styles";
 
 export const Like = () => {

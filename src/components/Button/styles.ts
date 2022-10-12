@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
+import { Color } from "ui";
 
 export const StyledButton = styled(motion.button)`
   background-color: ${Color.Primary};
@@ -12,4 +12,10 @@ export const StyledButton = styled(motion.button)`
   line-height: 24px;
   padding: 16px 40px;
   cursor: pointer;
+  &:hover {
+    background-color: ${Color.Secondary};
+  }
+  &:active {
+    transform: scale(1.1);
+  }
 `;

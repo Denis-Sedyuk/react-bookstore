@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { fetchBooks, useAppDispatch, useAppSelector, getBooks } from "../../store/index";
-import { BookItem, Spinner, Error } from "../index";
+import { fetchBooks, useAppDispatch, useAppSelector, getBooks } from "store";
+import { BookItem, Spinner, Error } from "components";
 import { StyledBookList } from "./styles";
 
 export const BookList = () => {
@@ -11,19 +11,15 @@ export const BookList = () => {
     dispatch(fetchBooks());
   }, [dispatch]);
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <Error />;
-  }
-
   return (
     <StyledBookList>
+      {/* <Container> */}
+      {isLoading && <Spinner />}
+      {error && <Error />}
       {books.map((book) => {
         return <BookItem book={book} key={book.isbn13} />;
       })}
+      {/* </Container> */}
     </StyledBookList>
   );
 };

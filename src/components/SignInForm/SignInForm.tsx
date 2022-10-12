@@ -1,10 +1,10 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { Input, Button, LabelForm, Spinner } from "../index";
+import { Input, Button, LabelForm, Spinner } from "components";
 import { ErrorDesc, ForgotPass, StyledFormSignIn } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
-import { ROUTE } from "../../routes";
+import { ROUTE } from "routes";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector, getUser, fetchSignInUser } from "../../store/index";
+import { useAppDispatch, useAppSelector, getUser, fetchSignInUser } from "store";
 
 export interface IProps {
   section: string;
@@ -32,7 +32,7 @@ export const SignInForm = ({ section }: IProps) => {
     setIsLoading(true);
     dispatch(fetchSignInUser(userInfo))
       .then(() => {
-        // navigate(ROUTE.HOME);
+        navigate(ROUTE.HOME);
       })
       .finally(() => {
         setIsLoading(false);
@@ -84,4 +84,3 @@ export const SignInForm = ({ section }: IProps) => {
     </StyledFormSignIn>
   );
 };
-// {isLoading ? "Loading..." : "Sign in"}

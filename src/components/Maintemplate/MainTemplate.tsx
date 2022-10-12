@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Footer, Navbar } from "../index";
+import { Footer, Navbar } from "components";
 import { Wrapper } from "./styles";
 
 export const MainTemplate = () => {

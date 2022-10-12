@@ -17,9 +17,13 @@ import { ReactComponent as LikeIcon } from "./icons/like.svg";
 import { ReactComponent as DisLikeIcon } from "./icons/dislike.svg";
 import { ReactComponent as PlusIcon } from "./icons/plus.svg";
 import { ReactComponent as MinusIcon } from "./icons/minus.svg";
+import { ReactComponent as ArrowRightPagination } from "./icons/arrow-next-page.svg";
+import { ReactComponent as ArrowleftPaginatiom } from "./icons/arrow-prev-page.svg";
+import { ReactComponent as SearchIcon } from "./icons/search.svg";
 
 export {
   Logo,
+  SearchIcon,
   FavoritesIcon,
   CartIcon,
   UserIcon,
@@ -38,4 +42,6 @@ export {
   DisLikeIcon,
   PlusIcon,
   MinusIcon,
+  ArrowRightPagination,
+  ArrowleftPaginatiom,
 };

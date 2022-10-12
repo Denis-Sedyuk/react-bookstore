@@ -1,6 +1,6 @@
-import { CloseIcon, MinusIcon, PlusIcon } from "../../assets/index";
-import { useAppDispatch, amountMinus, amountPlus, removeCart } from "../../store/index";
-import { IBookCart } from "../../types/types";
+import { CloseIcon, MinusIcon, PlusIcon } from "assets";
+import { useAppDispatch, amountMinus, amountPlus, removeCart } from "store";
+import { IBookCart } from "types";
 import { MouseEvent } from "react";
 import {
   Amount,
@@ -17,7 +17,7 @@ import {
   Price,
   PriceWrapper,
 } from "./styles";
-import { Color } from "../../ui";
+import { Color } from "ui";
 
 interface IProps {
   book: IBookCart;

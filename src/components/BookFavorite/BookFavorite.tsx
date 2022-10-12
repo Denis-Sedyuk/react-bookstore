@@ -1,10 +1,9 @@
 import { MouseEvent, useState } from "react";
 import { Rating } from "react-simple-star-rating";
-import { removeFavorite, useAppDispatch } from "../../store/index";
-import { IBookDetails } from "../../types/types";
-import { Color } from "../../ui/index";
-import { Like } from "../index";
-import { HeartIcon } from "../../assets/index";
+import { removeFavorite, useAppDispatch } from "store";
+import { IBookDetails } from "types";
+import { Color } from "ui";
+import { HeartIcon } from "assets";
 
 import {
   Authors,

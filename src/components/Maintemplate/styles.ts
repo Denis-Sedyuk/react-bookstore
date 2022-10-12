@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Media } from "../../ui/media";
+import { Media } from "ui";
 
 export const Wrapper = styled.div`
   display: grid;

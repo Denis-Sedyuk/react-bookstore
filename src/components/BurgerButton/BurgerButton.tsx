@@ -1,4 +1,4 @@
-import { BurgerIcon } from "../../assets/index";
+import { BurgerIcon } from "assets";
 import { StyledBurgerButton } from "./styles";
 
 interface IProps {

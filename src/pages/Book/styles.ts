@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Button } from "../../components/index";
-import { Color } from "../../ui/colors";
-import { Media } from "../../ui/media";
+import { Button } from "components";
+import { Color, Media } from "ui";
 
 export const BookPageContainer = styled.div`
   display: flex;
@@ -175,4 +174,10 @@ export const ArrowsBox = styled.div`
   display: flex;
   justify-self: end;
   gap: 20px;
+`;
+
+export const SliderContainer = styled.div`
+  display: flex;
+  width: 100%;
+  max-height: 550px;
 `;

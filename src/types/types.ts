@@ -56,7 +56,12 @@ export interface IPdf {
 }
 
 export interface IResponseSearchBook {
-  total: string;
   page: string;
+  total: string;
   books: IBook[];
+}
+
+export interface SearchValue {
+  query: string;
+  page: number;
 }

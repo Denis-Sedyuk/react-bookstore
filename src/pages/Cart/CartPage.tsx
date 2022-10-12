@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Button, ButtonBackPage, Cart, Title } from "../../components/index";
-import { useAppDispatch, useAppSelector, getCart } from "../../store/index";
+import { Button, ButtonBackPage, Cart, Title } from "components";
+import { useAppSelector, getCart } from "store";
 import {
   CartPageContainer,
   Cost,
@@ -12,7 +12,6 @@ import {
 } from "./styles";
 
 export const CartPage = () => {
-  const dispatch = useAppDispatch();
   const { cartBooks } = useAppSelector(getCart);
 
   const navigate = useNavigate();

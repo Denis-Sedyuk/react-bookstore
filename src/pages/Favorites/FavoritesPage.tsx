@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { BookFavorite, ButtonBackPage, Title } from "../../components/index";
-import { useAppDispatch, useAppSelector, getFavoritesBooks } from "../../store/index";
+import { BookFavorite, ButtonBackPage, Title } from "components";
+import { useAppSelector, getFavoritesBooks } from "store";
 import { FavoritePageContainer, FavoritesBookBox } from "./styles";
 
 export const FavoritesPage = () => {
-  const dispatch = useAppDispatch();
   const { favoritesBooks } = useAppSelector(getFavoritesBooks);
 
   const navigate = useNavigate();
@@ -15,11 +14,15 @@ export const FavoritesPage = () => {
     <FavoritePageContainer>
       <ButtonBackPage onCLick={handleBackPage} type="button" />
       <Title>Favorites</Title>
-      <FavoritesBookBox>
-        {favoritesBooks.map((book) => {
-          return <BookFavorite book={book} key={book.isbn13} />;
-        })}
-      </FavoritesBookBox>
+      {favoritesBooks.length > 0 ? (
+        <FavoritesBookBox>
+          {favoritesBooks.map((book) => {
+            return <BookFavorite book={book} key={book.isbn13} />;
+          })}
+        </FavoritesBookBox>
+      ) : (
+        <Title>Ooop's there's nothing here</Title>
+      )}
     </FavoritePageContainer>
   );
 };

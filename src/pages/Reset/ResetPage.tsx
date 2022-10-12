@@ -1,5 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
-import { LabelForm, Input, Button } from "../../components/index";
+import { LabelForm, Input, Button } from "components";
 import { FormStyled, Title } from "./styles";
 
 export const ResetPage = () => {

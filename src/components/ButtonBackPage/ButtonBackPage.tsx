@@ -1,5 +1,5 @@
-import { ArrowBackIcon } from "../../assets/index";
-import { Color } from "../../ui/index";
+import { ArrowBackIcon } from "assets";
+import { Color } from "ui";
 import { ArrowButtonBackPage } from "./styles";
 
 interface IProps {

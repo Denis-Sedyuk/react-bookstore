@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { ROUTE } from "../../routes";
-import { Portal } from "../index";
-import { PortalTarget } from "../Portal/Portal";
+import { ROUTE } from "routes";
+import { Portal } from "components";
+import { PortalTarget } from "components/Portal/Portal";
 import { Button, ModalBox, Title, Wrapper } from "./styles";
 
 interface IProps {
@@ -19,7 +19,7 @@ export const Modal = ({ toggleModal }: IProps) => {
             type="button"
             onClick={() => {
               toggleModal(false);
-              navigate(ROUTE.HOME);
+              navigate(`/${ROUTE.ACCOUNT}`);
             }}
           >
             Ok
